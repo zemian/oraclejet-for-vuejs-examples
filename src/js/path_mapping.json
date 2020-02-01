@@ -9,7 +9,7 @@
     },
     "3rdparty": "https://static.oracle.com/cdn/jet/v7.2.0/3rdparty"
   },
-
+  
   "libs": {
 
     "knockout": {
@@ -99,23 +99,6 @@
         "src": "dnd-polyfill-1.0.0.min.js",
         "path": "libs/dnd-polyfill/dnd-polyfill-1.0.0.min.js",
         "cdnPath": "dnd-polyfill/dnd-polyfill-1.0.0.min"
-      }
-    },
-
-    "persist": {
-      "cdn": "3rdparty",
-      "cwd": "node_modules/@oracle/oraclejet/dist/js/libs/persist",
-      "debug": {
-        "cwd": "debug",
-        "src": ["**"],
-        "path": "libs/persist/debug",
-        "cdnPath": "persist/debug"
-      },
-      "release": {
-        "cwd": "min",
-        "src": ["**"],
-        "path": "libs/persist/min",
-        "cdnPath": "persist/min"
       }
     },
 
@@ -210,36 +193,6 @@
         "cdnPath": "touchr/touchr"
       }
     },
-    
-    "regenerator-runtime": {
-      "cdn": "3rdparty",
-      "cwd": "node_modules/@oracle/oraclejet/dist/js/libs/regenerator-runtime",
-      "debug": {
-        "src":  "runtime.js",
-        "path": "libs/@tp:regenerator-runtime@.js",
-        "cdnPath": "@tp:regenerator-runtime@"
-      },
-      "release": {
-        "src": "runtime.js",
-        "path": "libs/@tp:regenerator-runtime@.js",
-        "cdnPath": "@tp:regenerator-runtime@"
-      }
-    },
-
-    "corejs": {
-      "cdn": "3rdparty",
-      "cwd": "node_modules/@oracle/oraclejet/dist/js/libs/corejs",
-      "debug": {
-        "src":  "shim.js",
-        "path": "libs/@tp:corejs:debug@.js",
-        "cdnPath": "@tp:corejs:debug@"
-      },
-      "release": {
-        "src": "shim.min.js",
-        "path": "libs/@tp:corejs@.js",
-        "cdnPath": "@tp:corejs@"
-      }
-    }, 
 
     "customElements": {
       "cdn": "3rdparty",

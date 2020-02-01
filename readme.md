@@ -1,5 +1,5 @@
-We will try to implements some of the VueJS Examples
-from https://vuejs.org/v2/examples/ using Oracle JET here.
+Here is a Oracle JET project that re-implements some of the 
+VueJS Examples from https://vuejs.org/v2/examples/.
 
 To get started:
 

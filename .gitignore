@@ -13,3 +13,5 @@ hybrid/plugins/*
 
 .DS_Store
 Thumbs.db
+
+.idea/

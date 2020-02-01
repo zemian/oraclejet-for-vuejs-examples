@@ -23,7 +23,7 @@
   ***************************** IMPORTANT INFORMATION ************************************ -->
 <html lang="en-us">
   <head>
-    <title>Oracle JET Starter Template - Web Blank</title>
+    <title>Oracle JET Examples</title>
     <meta http-equiv="x-ua-compatible" content="IE=edge"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="viewport-fit=cover, initial-scale=1.0"/>
@@ -34,9 +34,60 @@
     <!-- injector:theme -->
     <link rel="stylesheet" href="css/libs/oj/v7.2.0/alta/oj-alta-min.css" id="css" />
     <!-- endinjector -->
+
+    <!-- Example Style -->
+    <style>
+      html, body, #editor {
+        margin: 0;
+        height: 100%;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        color: #333;
+      }
+
+      textarea, #editor div {
+        display: inline-block;
+        width: 49%;
+        height: 100%;
+        vertical-align: top;
+        box-sizing: border-box;
+        padding: 0 20px;
+      }
+
+      textarea {
+        border: none;
+        border-right: 1px solid #ccc;
+        resize: none;
+        outline: none;
+        background-color: #f6f6f6;
+        font-size: 14px;
+        font-family: 'Monaco', courier, monospace;
+        padding: 20px;
+      }
+
+      code {
+        color: #f66;
+      }
+    </style>
     
   </head>
   <body>
+
+    <div id="app">
+      <h1><oj-bind-text value="[[exampleTitle]]"></oj-bind-text></h1>
+
+      <!-- Markdown Editor Example (https://vuejs.org/v2/examples/index.html) -->
+<!--      <script src="https://unpkg.com/marked@0.3.6"></script>-->
+<!--      <script src="https://unpkg.com/lodash@4.16.0"></script>-->
+
+      <div id="editor">
+        <!--<textarea :value="input" @input="update"></textarea>-->
+        <oj-text-area value="[[editorInput]]" on-value-changed="[[onEditorInputChanged]]"></oj-text-area>
+
+        <!--<div v-html="compiledMarkdown"></div>-->
+        <div id="compiledMarkdown" data-bind="html: compiledMarkdown"></div>
+      </div>
+      <!-- End of Example -->
+    </div>
 
     <script type="text/javascript" src="js/libs/require/require.js"></script>
     <script type="text/javascript" src="js/main.js"></script>

@@ -32,17 +32,43 @@ requirejs.config(
       'customElements': 'libs/webcomponents/custom-elements.min',
       'proj4': 'libs/proj4js/dist/proj4-src',
       'css': 'libs/require-css/css',
-      'touchr': 'libs/touchr/touchr'
+      'touchr': 'libs/touchr/touchr',
+
+        'marked': 'https://unpkg.com/marked@0.3.6/lib/marked',
+        'loadash': 'https://unpkg.com/lodash@4.16.0/lodash'
     }
     //endinjector
   }
   );
 
-require(['ojs/ojbootstrap', 'knockout', 'ojs/ojknockout'],
-  function (Bootstrap) {
+require(['ojs/ojbootstrap',
+    'knockout',
+    'marked',
+    'loadash',
+    'ojs/ojknockout',
+    'ojs/ojinputtext'],
+  function (Bootstrap, ko, marked, _) {
     Bootstrap.whenDocumentReady().then(
       function () {
         function init() {
+
+            // TODO: Do we need to use _.debounce()?
+            function ViewModel() {
+                this.exampleTitle = "Markdown Editor Example";
+                this.editorInput = ko.observable("# Hello");
+                this.compiledMarkdown = ko.computed(function(){
+                    let result = marked(this.editorInput(), { sanitize: true });
+                    //console.log("Markdown:", result);
+                    return result;
+                }, this);
+            }
+            ViewModel.prototype.onEditorInputChanged = function (event, vm) {
+                console.log("onEditorInputChanged", event, vm);
+                vm.editorInput(event.detail.value);
+            };
+
+            let vm = new ViewModel();
+            ko.applyBindings(vm, document.getElementById("app"))
         }
 
         // If running in a hybrid (e.g. Cordova) environment, we need to wait for the deviceready

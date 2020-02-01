@@ -38,6 +38,14 @@ requirejs.config(
 }
 );
 
+// Extra Examples Dependencies
+require.config({
+  paths: {
+    'marked': 'https://unpkg.com/marked@0.3.6/lib/marked',
+    'loadash': 'https://unpkg.com/lodash@4.16.0/lodash'
+  }
+});
+
 /**
  * A top-level require call executed by the Application.
  * Although 'knockout' would be loaded in any case (it is specified as a  dependency

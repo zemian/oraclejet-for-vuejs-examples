@@ -20,9 +20,7 @@ define(['knockout', 'ojs/ojmodule-element-utils', 'ojs/ojresponsiveutils', 'ojs/
        // Router setup
        self.router = Router.rootInstance;
        self.router.configure({
-         'dashboard': {label: 'Dashboard', isDefault: true},
-         'incidents': {label: 'Incidents'},
-         'customers': {label: 'Customers'},
+         'example1': {label: 'Example1', isDefault: true},
          'about': {label: 'About'}
        });
       Router.defaults['urlAdapter'] = new Router.urlParamAdapter();
@@ -48,12 +46,8 @@ define(['knockout', 'ojs/ojmodule-element-utils', 'ojs/ojresponsiveutils', 'ojs/
 
       // Navigation setup
       var navData = [
-      {name: 'Dashboard', id: 'dashboard',
-       iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-chart-icon-24'},
-      {name: 'Incidents', id: 'incidents',
-       iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-fire-icon-24'},
-      {name: 'Customers', id: 'customers',
-       iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-people-icon-24'},
+      {name: 'Example1', id: 'example1',
+       iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-catalog-icon-24'},
       {name: 'About', id: 'about',
        iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-info-icon-24'}
       ];
@@ -61,9 +55,9 @@ define(['knockout', 'ojs/ojmodule-element-utils', 'ojs/ojresponsiveutils', 'ojs/
 
       // Header
       // Application Name used in Branding Area
-      self.appName = ko.observable("App Name");
+      self.appName = ko.observable("OJET Re-implementation of VueJS Examples");
       // User Info used in Global Navigation area
-      self.userLogin = ko.observable("john.hancock@oracle.com");
+      self.userLogin = ko.observable("zemian.deng@oracle.com");
 
       // Footer
       function footerLink(name, id, linkTarget) {

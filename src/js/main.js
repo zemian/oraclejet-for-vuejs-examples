@@ -32,14 +32,19 @@ requirejs.config(
       'customElements': 'libs/webcomponents/custom-elements.min',
       'proj4': 'libs/proj4js/dist/proj4-src',
       'css': 'libs/require-css/css',
-      'touchr': 'libs/touchr/touchr',
-
-        'marked': 'https://unpkg.com/marked@0.3.6/lib/marked',
-        'loadash': 'https://unpkg.com/lodash@4.16.0/lodash'
+      'touchr': 'libs/touchr/touchr'
     }
     //endinjector
   }
   );
+
+// Extra Examples Dependencies
+require.config({
+    paths: {
+        'marked': 'https://unpkg.com/marked@0.3.6/lib/marked',
+        'loadash': 'https://unpkg.com/lodash@4.16.0/lodash'
+    }
+});
 
 require(['ojs/ojbootstrap',
     'knockout',

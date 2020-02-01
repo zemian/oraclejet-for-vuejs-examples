@@ -1,18 +1,19 @@
-<div id="app">
-    <h1>Markdown Editor Example</h1>
-
-    <!-- Markdown Editor Example (https://vuejs.org/v2/examples/index.html) -->
-    <!--      <script src="https://unpkg.com/marked@0.3.6"></script>-->
-    <!--      <script src="https://unpkg.com/lodash@4.16.0"></script>-->
-
-    <div id="editor">
-        <!--<textarea :value="input" @input="update"></textarea>-->
-        <oj-text-area value="[[editorInput]]"
-                      on-raw-value-changed="[[onEditorRawInputChanged]]">
-        </oj-text-area>
-
-        <!--<div v-html="compiledMarkdown"></div>-->
-        <div id="compiledMarkdown" data-bind="html: compiledMarkdown"></div>
+<div id="example1" class="oj-flex oj-sm-flex-direction-column">
+    <div id="header" class="oj-flex-item">
+        <h1>Markdown Editor Example</h1>
     </div>
-    <!-- End of Example -->
+    <div id="content" class="oj-flex-item">
+        <div class="oj-flex">
+            <div id="editor" class="oj-flex-item">
+                <oj-text-area value="[[editorInput]]"
+                              on-raw-value-changed="[[onEditorRawInputChanged]]"
+                              rows="35"
+                              style="width: 100%; max-width: 100%;">
+                </oj-text-area>
+            </div>
+            <div id="output" class="oj-flex-item">
+                <div id="compiledMarkdown" data-bind="html: compiledMarkdown"></div>
+            </div>
+        </div>
+    </div>
 </div>

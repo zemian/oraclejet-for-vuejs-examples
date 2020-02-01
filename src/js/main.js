@@ -59,7 +59,6 @@ require(['ojs/ojbootstrap',
 
             // TODO: Do we need to use _.debounce()?
             function ViewModel() {
-                this.exampleTitle = "Markdown Editor Example";
                 this.editorInput = ko.observable("# Hello");
                 this.compiledMarkdown = ko.computed(function(){
                     let result = marked(this.editorInput(), { sanitize: true });
@@ -67,10 +66,10 @@ require(['ojs/ojbootstrap',
                     return result;
                 }, this);
             }
-            ViewModel.prototype.onEditorInputChanged = function (event, vm) {
-                console.log("onEditorInputChanged", event, vm);
+            ViewModel.prototype.onEditorRawInputChanged = _.debounce(function (event, vm) {
+                //console.log("onEditorInputChanged", event, vm);
                 vm.editorInput(event.detail.value);
-            };
+            }, 300);
 
             let vm = new ViewModel();
             ko.applyBindings(vm, document.getElementById("app"))

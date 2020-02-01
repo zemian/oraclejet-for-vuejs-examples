@@ -73,7 +73,7 @@
   <body>
 
     <div id="app">
-      <h1><oj-bind-text value="[[exampleTitle]]"></oj-bind-text></h1>
+      <h1>Markdown Editor Example</h1>
 
       <!-- Markdown Editor Example (https://vuejs.org/v2/examples/index.html) -->
 <!--      <script src="https://unpkg.com/marked@0.3.6"></script>-->
@@ -81,7 +81,9 @@
 
       <div id="editor">
         <!--<textarea :value="input" @input="update"></textarea>-->
-        <oj-text-area value="[[editorInput]]" on-value-changed="[[onEditorInputChanged]]"></oj-text-area>
+        <oj-text-area value="[[editorInput]]"
+                      on-raw-value-changed="[[onEditorRawInputChanged]]">
+        </oj-text-area>
 
         <!--<div v-html="compiledMarkdown"></div>-->
         <div id="compiledMarkdown" data-bind="html: compiledMarkdown"></div>

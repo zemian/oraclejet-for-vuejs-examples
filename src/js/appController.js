@@ -21,6 +21,7 @@ define(['knockout', 'ojs/ojmodule-element-utils', 'ojs/ojresponsiveutils', 'ojs/
        self.router = Router.rootInstance;
        self.router.configure({
          'example1': {label: 'Example1', isDefault: true},
+         'example2': {label: 'Example2'},
          'about': {label: 'About'}
        });
       Router.defaults['urlAdapter'] = new Router.urlParamAdapter();
@@ -46,10 +47,9 @@ define(['knockout', 'ojs/ojmodule-element-utils', 'ojs/ojresponsiveutils', 'ojs/
 
       // Navigation setup
       var navData = [
-      {name: 'Example1', id: 'example1',
-       iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-catalog-icon-24'},
-      {name: 'About', id: 'about',
-       iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-info-icon-24'}
+      {name: 'Example1', id: 'example1', iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-catalog-icon-24'},
+      {name: 'Example2', id: 'example2', iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-catalog-icon-24'},
+      {name: 'About', id: 'about', iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-info-icon-24'}
       ];
       self.navDataProvider = new ArrayDataProvider(navData, {keyAttributes: 'id'});
 

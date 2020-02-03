@@ -56,7 +56,11 @@
             </oj-list-view>
           </div>
           <div id="content">
-            Display Content For: <oj-bind-text value="[[selectedNavLinkId]]"></oj-bind-text>
+<!--            Display Content For: <oj-bind-text value="[[selectedNavLinkId]]"></oj-bind-text>-->
+<!--            <oj-module config="[[router.moduleConfig]]"></oj-module>-->
+
+            <div data-bind="ojModule: router.moduleConfig">
+            </div>
           </div>
         </div>
       </div>

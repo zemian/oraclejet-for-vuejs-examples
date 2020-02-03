@@ -1,0 +1,28 @@
+<div id="example1" class="oj-flex oj-sm-flex-direction-column">
+    <div id="header" class="oj-flex-item">
+        <h1>GitHub Commits Example</h1>
+    </div>
+    <div id="content" class="oj-flex-item">
+        <h1>Latest Vue.js Commits</h1>
+            <oj-radioset class="oj-choice-direction-row" value="[[currentBranch]]" on-value-changed="[[onBranchNameChanged]]">
+                <oj-bind-for-each data="[[branches]]">
+                    <template>
+                        <oj-option value="[[$current.data]]"><oj-bind-text value="[[$current.data]]"></oj-bind-text></oj-option>
+                    </template>
+                </oj-bind-for-each>
+            </oj-radioset>
+        <p>vuejs/vue@<oj-bind-text value="[[currentBranch]]"></oj-bind-text></p>
+        <ul id="commits-list">
+            <oj-bind-for-each data="[[commits]]" as="record">
+                <template>
+                    <li>
+                        <a :href="[[record.html_url]]" target="_blank" class="commit"><oj-bind-text value="[[ record.data.sha.slice(0, 7) ]]"></oj-bind-text></a>
+                        - <span class="message"><oj-bind-text value="[[ truncate(record.data.commit.message) ]]"></oj-bind-text></span><br>
+                        by <span class="author"><a :href="[[record.data.author.html_url]]" target="_blank"><oj-bind-text value="[[ record.data.commit.author.name  ]]"></oj-bind-text></a></span>
+                        at <span class="date"><oj-bind-text value="[[ formatDate(record.data.commit.author.date)  ]]"></oj-bind-text></span>
+                    </li>
+                </template>
+            </oj-bind-for-each>
+        </ul>
+    </div>
+</div>

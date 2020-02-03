@@ -38,9 +38,20 @@ requirejs.config(
   }
   );
 
+// Extra Examples Dependencies
+require.config({
+    paths: {
+        'marked': 'https://unpkg.com/marked@0.3.6/lib/marked',
+        'loadash': 'https://unpkg.com/lodash@4.16.0/lodash'
+    }
+});
+
 require(['ojs/ojbootstrap',
         'knockout',
         'ojs/ojarraydataprovider',
+        'ojs/ojrouter',
+        'ojs/ojmodule',
+        'ojs/ojmodule-element',
         'ojs/ojknockout',
         'ojs/ojlistview'],
   function (Bootstrap, ko, ArrayDataProvider) {
@@ -49,11 +60,24 @@ require(['ojs/ojbootstrap',
         function init() {
             function ViewModel () {
                 this.pageTitle = "OracleJET Examples";
-                this.navLinks = [
-                    {id: "example1", label: "Markdown Editor"},
-                    {id: "example2", label: "Github Commits"}
-                ];
-                this.navLinksDP = new ArrayDataProvider(this.navLinks, {keyAttributes: "id"});
+                this.navLinks = {
+                    'home': {label: 'Home', value: 'home', isDefault: true},
+                    'example1': {label: 'Markdown Editor', value: 'example1'},
+                    'example2': {label: 'Github Commits', value: 'example2'}
+                };
+
+                // Change default URL adapter
+                oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
+
+                // Change the default location for the viewModel and view files
+                oj.ModuleBinding.defaults.modelPath = 'app-module/models/';
+                oj.ModuleBinding.defaults.viewPath = 'text!app-module/views/';
+
+                // Retrieve the router static instance and configure the states
+                this.router = oj.Router.rootInstance;
+                this.router.configure(this.navLinks);
+
+                this.navLinksDP = new ArrayDataProvider(Object.values(this.navLinks), {keyAttributes: "value"});
                 this.selectedNavLinkId = ko.observable();
                 this.onNavLinkChanged = function (event) {
                     //console.log("Changing menu nav", event);
@@ -62,6 +86,8 @@ require(['ojs/ojbootstrap',
                     let key = keyArrays[0]; // since we handle single select, we care only first element
                     //console.log("Selected key", key);
                     this.selectedNavLinkId(key);
+
+                    this.router.stateId(key);
                 }.bind(this);
             }
 

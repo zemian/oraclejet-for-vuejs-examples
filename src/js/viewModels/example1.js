@@ -13,11 +13,12 @@ define([
              //console.log("Markdown:", result);
              return result;
          }, this);
+
+         this.onEditorRawInputChanged = _.debounce(function (event, vm) {
+             //console.log("onEditorInputChanged", event, vm);
+             vm.editorInput(event.detail.value);
+         }, 300);
      }
-     ViewModel.prototype.onEditorRawInputChanged = _.debounce(function (event, vm) {
-         //console.log("onEditorInputChanged", event, vm);
-         vm.editorInput(event.detail.value);
-     }, 300);
 
      return new ViewModel();
   }

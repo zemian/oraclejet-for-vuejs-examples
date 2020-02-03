@@ -30,13 +30,37 @@
     <link rel="icon" type="image/x-icon" href="css/images/favicon.ico">
     <link rel="apple-touch-icon-precomposed" href="css/images/touchicon.png">
     <meta name="apple-mobile-web-app-title" content="Oracle JET">
+    <link rel="stylesheet" href="css/app.css"/>
 
     <!-- injector:theme -->
     <link rel="stylesheet" href="css/libs/oj/v7.2.0/alta/oj-alta-min.css" id="css" />
     <!-- endinjector -->
-    
+
   </head>
   <body>
+    <div id="app" class="oj-flex oj-sm-flex-direction-column">
+      <div id="header" class="oj-flex-item">
+        <h1><oj-bind-text value="[[pageTitle]]"></oj-bind-text></h1>
+      </div>
+      <div id="page-body" class="oj-flex-item">
+        <div id="page-body-content" class="oj-flex">
+          <div id="nav">
+            <oj-list-view id="nav-menu-list"
+                          data="[[navLinksDP]]"
+                          selection-mode="single"
+                          selection-required="true"
+                          on-selected-changed="[[onNavLinkChanged]]">
+                <template slot="itemTemplate">
+                  <li><a class="oj-link" href="#"><oj-bind-text value="[[$current.data.label]]"></oj-bind-text></a></li>
+                </template>
+            </oj-list-view>
+          </div>
+          <div id="content">
+            Display Content For: <oj-bind-text value="[[selectedNavLinkId]]"></oj-bind-text>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script type="text/javascript" src="js/libs/require/require.js"></script>
     <script type="text/javascript" src="js/main.js"></script>

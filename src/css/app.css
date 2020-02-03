@@ -1,0 +1,16 @@
+#app {
+    margin: 10px;
+}
+
+#page-body {
+}
+
+#nav {
+    flex: 0 1 auto;
+    width: 250px;
+    margin-right: 10px;
+}
+
+#content {
+    flex: 1 0 auto;
+}

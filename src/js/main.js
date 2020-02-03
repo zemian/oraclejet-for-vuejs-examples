@@ -38,11 +38,37 @@ requirejs.config(
   }
   );
 
-require(['ojs/ojbootstrap', 'knockout', 'ojs/ojknockout'],
-  function (Bootstrap) {
+require(['ojs/ojbootstrap',
+        'knockout',
+        'ojs/ojarraydataprovider',
+        'ojs/ojknockout',
+        'ojs/ojlistview'],
+  function (Bootstrap, ko, ArrayDataProvider) {
     Bootstrap.whenDocumentReady().then(
       function () {
         function init() {
+            function ViewModel () {
+                this.pageTitle = "OracleJET Examples";
+                this.navLinks = [
+                    {id: "example1", label: "Markdown Editor"},
+                    {id: "example2", label: "Github Commits"}
+                ];
+                this.navLinksDP = new ArrayDataProvider(this.navLinks, {keyAttributes: "id"});
+                this.selectedNavLinkId = ko.observable();
+                this.onNavLinkChanged = function (event) {
+                    //console.log("Changing menu nav", event);
+                    // event.detail.value type=KeySetImpl
+                    let keyArrays = Array.from(event.detail.value.values());
+                    let key = keyArrays[0]; // since we handle single select, we care only first element
+                    //console.log("Selected key", key);
+                    this.selectedNavLinkId(key);
+                }.bind(this);
+            }
+
+            let app = new ViewModel();
+
+            // Bind your ViewModel for the content of the whole page body.
+            ko.applyBindings(app, document.getElementById('app'));
         }
 
         // If running in a hybrid (e.g. Cordova) environment, we need to wait for the deviceready

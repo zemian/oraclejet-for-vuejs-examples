@@ -15,3 +15,4 @@ hybrid/plugins/*
 Thumbs.db
 
 .idea/
+temp/

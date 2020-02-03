@@ -1,19 +1,10 @@
-<div id="example1" class="oj-flex oj-sm-flex-direction-column">
-    <div id="header" class="oj-flex-item">
-        <h1>Markdown Editor Example</h1>
-    </div>
-    <div id="content" class="oj-flex-item">
-        <div class="oj-flex">
-            <div id="editor" class="oj-flex-item">
-                <oj-text-area value="[[editorInput]]"
-                              on-raw-value-changed="[[onEditorRawInputChanged]]"
-                              rows="25"
-                              style="width: 100%; max-width: 100%;">
-                </oj-text-area>
-            </div>
-            <div id="output" class="oj-flex-item">
-                <div id="compiledMarkdown" data-bind="html: compiledMarkdown"></div>
-            </div>
-        </div>
+<h1>Markdown Editor Example</h1>
+<div id="editor">
+    <oj-text-area value="[[editorInput]]"
+                  on-raw-value-changed="[[onEditorRawInputChanged]]"
+                  rows="25">
+    </oj-text-area>
+    <div id="output">
+        <div id="compiledMarkdown" data-bind="html: compiledMarkdown"></div>
     </div>
 </div>

@@ -71,9 +71,17 @@ require(['ojs/ojbootstrap',
                     let modName = "examples";
                     let viewPath = `${modName}/views/${name}.html`;
                     let modelPath = `${modName}/models/${name}`;
+                    let cssPromise = new Promise(function(resolve, reject) {
+                        try {
+                            require([`css!${modName}/views/${name}.css`], resolve, reject);
+                        } catch (e) {
+                            // Ignore.
+                        }
+                    });
                     let masterPromise = Promise.all([
                         ModuleUtils.createView({"viewPath": viewPath}),
-                        ModuleUtils.createViewModel({"viewModelPath": modelPath})
+                        ModuleUtils.createViewModel({"viewModelPath": modelPath}),
+                        cssPromise
                     ]);
                     masterPromise.then((values) => {
                         this.moduleConfig({"view": values[0],"viewModel": values[1]});

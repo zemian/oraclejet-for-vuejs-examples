@@ -9,6 +9,11 @@ npx ojet serve
 # open http://localhost:8080
 ```
 
+## Some Example Screenshots
+
+![commits-screenshot.png](docs/commits-screenshot.png)
+![grid-componet-screenshot.png](docs/grid-componet-screenshot.png)
+
 ## VueJS Examples
 
 A copy of the VueJS (v2) Examples under `vuejs-examples` 

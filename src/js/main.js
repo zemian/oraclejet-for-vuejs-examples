@@ -62,7 +62,8 @@ require(['ojs/ojbootstrap',
                 this.navLinks = {
                     'home': {label: 'Home', isDefault: true},
                     'example1': {label: 'Markdown Editor'},
-                    'example2': {label: 'Github Commits'}
+                    'example2': {label: 'Github Commits'},
+                    'example3': {label: 'Grid Component'}
                 };
 
                 this.moduleConfig = ko.observable({"view": [], "viewModel": null});

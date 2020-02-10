@@ -1,0 +1,47 @@
+<!-- component template -->
+<script type="text/x-template" id="grid-template">
+    <oj-bind-if test="[[filteredData().length > 0]]">
+        <table>
+            <thead>
+            <tr>
+                <oj-bind-for-each data="[[columns]]">
+                    <template>
+                        <th :class="[[{ active: sortKey() === $current.data }]]" data-bind="click: () => sortBy($current.data)">
+                            <oj-bind-text value="[[capitalize($current.data)]]"></oj-bind-text>
+                            <span :class="[['arrow ' + (sortOrders[$current.data]() > 0 ? 'asc' : 'dsc')]]"></span>
+                        </th>
+                    </template>
+                </oj-bind-for-each>
+            </tr>
+            </thead>
+            <tbody>
+                <oj-bind-for-each data="[[filteredData]]" as="entry">
+                    <template>
+                        <tr>
+                        <oj-bind-for-each data="[[columns]]" as="key">
+                            <template>
+                                <td><oj-bind-text value="[[entry.data[key.data]]]"></oj-bind-text></td>
+                            </template>
+                        </oj-bind-for-each>
+                        </tr>
+                    </template>
+                </oj-bind-for-each>
+            </tbody>
+        </table>
+    </oj-bind-if>
+    <oj-bind-if test="[[filteredData().length <= 0]]">
+        <p>No matches found.</p>
+    </oj-bind-if>
+</script>
+
+<!-- demo root element -->
+<div id="demo">
+    <form id="search">
+        Search <oj-input-text name="query" raw-value="{{searchQuery}}"></oj-input-text>
+    </form>
+    <demo-grid
+            data="[[gridData]]"
+            columns="[[gridColumns]]"
+            filter-key="[[searchQuery]]">
+    </demo-grid>
+</div>

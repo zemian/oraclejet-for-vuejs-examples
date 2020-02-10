@@ -1,16 +1,23 @@
+html, body, #app, #page-body, #content, #content-module {
+    height: 100%;
+    width: 100%;
+}
+
 #app {
     margin: 10px;
 }
 
 #page-body {
+    display: flex;
+    flex-direction: row;
 }
 
 #nav {
-    flex: 0 1 auto;
+    flex: 0 0 auto;
     width: 250px;
     margin-right: 10px;
 }
 
 #content {
-    flex: 1 0 auto;
+    flex: 1 1 auto;
 }

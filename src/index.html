@@ -21,21 +21,19 @@
         <h1><oj-bind-text value="[[pageTitle]]"></oj-bind-text></h1>
       </div>
       <div id="page-body">
-        <div id="page-body-content">
-          <div id="nav">
-            <oj-list-view id="nav-menu-list"
-                          data="[[navLinksDP]]"
-                          selection-mode="single"
-                          selection-required="true"
-                          on-selected-changed="[[onNavLinkChanged]]">
-                <template slot="itemTemplate">
-                  <li><a class="oj-link" href="#"><oj-bind-text value="[[$current.data.label]]"></oj-bind-text></a></li>
-                </template>
-            </oj-list-view>
-          </div>
-          <div id="content">
-            <oj-module config="[[moduleConfig]]"></oj-module>
-          </div>
+        <div id="nav">
+          <oj-list-view id="nav-menu-list"
+                        data="[[navLinksDP]]"
+                        selection-mode="single"
+                        selection-required="true"
+                        on-selected-changed="[[onNavLinkChanged]]">
+            <template slot="itemTemplate">
+              <li><a class="oj-link" href="#"><oj-bind-text value="[[$current.data.label]]"></oj-bind-text></a></li>
+            </template>
+          </oj-list-view>
+        </div>
+        <div id="content">
+          <oj-module id="content-module" config="[[moduleConfig]]"></oj-module>
         </div>
       </div>
     </div>

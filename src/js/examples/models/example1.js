@@ -15,8 +15,7 @@ define([
     'knockout',
     'marked',
     'loadash',
-    'ojs/ojknockout',
-    'ojs/ojinputtext'],
+    'ojs/ojknockout'],
     function(ko, marked, _) {
 
      function ViewModel() {

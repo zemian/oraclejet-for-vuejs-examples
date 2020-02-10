@@ -1,9 +1,4 @@
 <div id="editor">
-    <oj-text-area value="[[editorInput]]"
-                  on-raw-value-changed="[[onEditorRawInputChanged]]"
-                  rows="25">
-    </oj-text-area>
-    <div id="output">
-        <div id="compiledMarkdown" data-bind="html: compiledMarkdown"></div>
-    </div>
+    <textarea data-bind="textInput: editorInput"></textarea>
+    <div id="compiledMarkdown" data-bind="html: compiledMarkdown"></div>
 </div>

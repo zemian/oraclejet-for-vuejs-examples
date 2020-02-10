@@ -9,9 +9,8 @@ npx ojet serve
 # open http://localhost:8080
 ```
 
-## Some Example Screenshots
+## Some Oracle JET Example Screenshots
 
-![home.png](docs/home.png)
 ![example1.png](docs/example1.png)
 ![example2.png](docs/example2.png)
 ![example3.png](docs/example3.png)

@@ -11,8 +11,10 @@ npx ojet serve
 
 ## Some Example Screenshots
 
-![commits-screenshot.png](docs/commits-screenshot.png)
-![grid-componet-screenshot.png](docs/grid-componet-screenshot.png)
+![home.png](docs/home.png)
+![example1.png](docs/example1.png)
+![example2.png](docs/example2.png)
+![example3.png](docs/example3.png)
 
 ## VueJS Examples
 

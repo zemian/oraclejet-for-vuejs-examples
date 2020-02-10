@@ -58,12 +58,12 @@ require(['ojs/ojbootstrap',
       function () {
         function init() {
             function ViewModel () {
-                this.pageTitle = "OracleJET Examples";
+                this.pageTitle = ko.observable();
                 this.navLinks = {
-                    'home': {label: 'Home', isDefault: true},
-                    'example1': {label: 'Markdown Editor'},
-                    'example2': {label: 'Github Commits'},
-                    'example3': {label: 'Grid Component'}
+                    'home': {isDefault: true, label: 'Home', pageTitle: 'OracleJET Examples'},
+                    'example1': {label: 'Markdown Editor', pageTitle: 'Markdown Editor Example'},
+                    'example2': {label: 'Github Commits', pageTitle: 'GitHub Commits Example'},
+                    'example3': {label: 'Grid Component', pageTitle: 'Grid Component Example'}
                 };
 
                 this.moduleConfig = ko.observable({"view": [], "viewModel": null});
@@ -95,12 +95,15 @@ require(['ojs/ojbootstrap',
                     return v;
                 });
                 this.navLinksDP = new ArrayDataProvider(navLinksArray, {keyAttributes: "value"});
-                this.onNavLinkChanged = function (event) {
+                this.onNavLinkChanged = function(event) {
                     //console.log("Changing menu nav", event);
                     // event.detail.value type=KeySetImpl
                     let keyArrays = Array.from(event.detail.value.values());
                     let key = keyArrays[0]; // since we handle single select, we care only first element
                     //console.log("Selected key", key);
+
+                    this.pageTitle(this.navLinks[key].pageTitle);
+
                     this.loadModuleConfig(key);
                 }.bind(this);
             }

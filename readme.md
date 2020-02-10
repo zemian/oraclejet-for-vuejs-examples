@@ -9,6 +9,10 @@ npx ojet serve
 # open http://localhost:8080
 ```
 
+In each example, there are some developer notes and tips in
+comparing the two framework usage. To see more details, open each
+file under `src/js/examples` folder.
+
 ## Some Oracle JET Example Screenshots
 
 ![example1.png](docs/example1.png)

@@ -11,27 +11,26 @@ the textarea input is not able to pick up the VueJS example styling. But
 functionality it's working fine. To have a exact looks matching, we need
 to play with OJET flex/grid container to maximize the textarea input.
  */
-define([
-    'knockout',
-    'marked',
-    'loadash',
-    'ojs/ojknockout'],
-    function(ko, marked, _) {
+define(['knockout',
+        'marked',
+        'loadash',
+        'ojs/ojknockout'],
+    function (ko, marked, _) {
 
-     function ViewModel() {
-         this.editorInput = ko.observable("# Hello");
-         this.compiledMarkdown = ko.computed(function(){
-             let result = marked(this.editorInput(), { sanitize: true });
-             //console.log("Markdown:", result);
-             return result;
-         }, this);
+        function ViewModel() {
+            this.editorInput = ko.observable("# Hello");
+            this.compiledMarkdown = ko.computed(function () {
+                let result = marked(this.editorInput(), {sanitize: true});
+                //console.log("Markdown:", result);
+                return result;
+            }, this);
 
-         this.onEditorRawInputChanged = _.debounce(function (event, vm) {
-             //console.log("onEditorInputChanged", event, vm);
-             vm.editorInput(event.detail.value);
-         }, 300);
-     }
+            this.onEditorRawInputChanged = _.debounce(function (event, vm) {
+                //console.log("onEditorInputChanged", event, vm);
+                vm.editorInput(event.detail.value);
+            }, 300);
+        }
 
-     return new ViewModel();
-  }
+        return new ViewModel();
+    }
 );

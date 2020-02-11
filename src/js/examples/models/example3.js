@@ -16,8 +16,7 @@ in special form other than declare as 'data'.
 OJET does not have a nice 'click' event binding, so we need to use KO version
 here.
  */
-define([
-    'knockout',
+define(['knockout',
     'ojs/ojcomposite',
     'ojs/ojknockout',
     'ojs/ojinputtext'],

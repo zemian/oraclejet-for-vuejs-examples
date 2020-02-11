@@ -1,14 +1,14 @@
 #demo {
     font-family: 'Helvetica', Arial, sans-serif;
 }
-a {
+#demo a {
     text-decoration: none;
     color: #f66;
 }
-li {
+#demo li {
     line-height: 1.5em;
     margin-bottom: 20px;
 }
-.author, .date {
+#demo .author, .date {
     font-weight: bold;
 }

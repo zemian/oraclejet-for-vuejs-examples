@@ -1,16 +1,16 @@
-body {
+#demo {
     font-family: Helvetica Neue, Arial, sans-serif;
     font-size: 14px;
     color: #444;
 }
 
-table {
+#demo table {
     border: 2px solid #42b983;
     border-radius: 3px;
     background-color: #fff;
 }
 
-th {
+#demo th {
     background-color: #42b983;
     color: rgba(255,255,255,0.66);
     cursor: pointer;
@@ -20,24 +20,24 @@ th {
     user-select: none;
 }
 
-td {
+#demo td {
     background-color: #f9f9f9;
 }
 
-th, td {
+#demo th, td {
     min-width: 120px;
     padding: 10px 20px;
 }
 
-th.active {
+#demo th.active {
     color: #fff;
 }
 
-th.active .arrow {
+#demo th.active .arrow {
     opacity: 1;
 }
 
-.arrow {
+#demo .arrow {
     display: inline-block;
     vertical-align: middle;
     width: 0;
@@ -46,13 +46,13 @@ th.active .arrow {
     opacity: 0.66;
 }
 
-.arrow.asc {
+#demo .arrow.asc {
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     border-bottom: 4px solid #fff;
 }
 
-.arrow.dsc {
+#demo .arrow.dsc {
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     border-top: 4px solid #fff;

@@ -19,6 +19,13 @@ file under `src/js/examples` folder.
 ![example2.png](docs/example2.png)
 ![example3.png](docs/example3.png)
 
+## Fixing Example CSS files
+
+The example css files assume each example is it's only example and style some 
+elements globally. This affected some of OJET own theme styling. So a fix 
+is added to prefix some elements with #demo container selector to prevent this
+problem.
+
 ## VueJS Examples
 
 A copy of the VueJS (v2) Examples under `vuejs-examples` 

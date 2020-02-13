@@ -21,18 +21,20 @@ file under `src/js/examples` folder.
 
 ## Fixing Example CSS files
 
-The example css files assume each example is it's only example and style some 
-elements globally. This affected some of OJET own theme styling. So a fix 
-is added to prefix some elements with #demo container selector to prevent this
-problem.
+The original example css files assume each example is in it's own html page
+and style some elements globally. This affected some of OJET own theme styling
+when we try to load all examples as single page application. So a fix is added 
+some example css to prefix some elements with #demo container selector. This 
+prevents style overrides problem. Other than this, the example should look
+and behave the same as original work.
 
 ## Examples List
 
-A copy of the VueJS (v2) Examples under `vuejs-examples` 
+A copy of the original VueJS (v2) Examples is under `vuejs-examples` 
 directory. These examples should able to run by opening the `index.html` 
 in a browser without running a web server. 
 
-Examples List:
+Re-implementation Completion List:
 
     [x] Markdown Editor
     [x] GitHub Commits

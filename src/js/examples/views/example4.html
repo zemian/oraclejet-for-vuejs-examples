@@ -5,9 +5,11 @@
              on-click="[[toggle]]"
              on-dblclick="[[changeType]]">
             <oj-bind-text value="[[model.name]]"></oj-bind-text>
-            <span data-bind="if: isFolder() || childrenObsArray()">
+            <oj-bind-if test="[[isFolder() || childrenObsArray()]]">
+                <span>
                     <oj-bind-text value="[[open() ? '[-]' : '[+]']]"></oj-bind-text>
-            </span>
+                </span>
+            </oj-bind-if>
         </div>
         <oj-bind-if test="[[(isFolder() && open()) && childrenObsArray()]]">
             <ul>

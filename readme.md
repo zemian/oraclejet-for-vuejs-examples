@@ -15,9 +15,9 @@ file under `src/js/examples` folder.
 
 ## Some Oracle JET Example Screenshots
 
-![example1.png](docs/example1.png)
-![example2.png](docs/example2.png)
-![example3.png](docs/example3.png)
+![markdown.png](docs/markdown.png)
+![commits.png](docs/commits.png)
+![grid.png](docs/grid.png)
 
 ## Fixing Example CSS files
 

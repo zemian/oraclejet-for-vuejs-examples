@@ -34,7 +34,7 @@ A copy of the original VueJS (v2) Examples is under `vuejs-examples`
 directory. These examples should able to run by opening the `index.html` 
 in a browser without running a web server. 
 
-Re-implementation Completion List:
+Re-implementation List:
 
 - [x] Markdown Editor
 - [x] GitHub Commits

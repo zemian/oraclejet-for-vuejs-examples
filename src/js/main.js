@@ -50,23 +50,16 @@ require(['ojs/ojbootstrap',
         'knockout',
         'ojs/ojarraydataprovider',
         'ojs/ojmodule-element-utils',
+        'ojs/ojkeyset',
         'ojs/ojmodule-element',
         'ojs/ojknockout',
         'ojs/ojlistview'],
-  function (Bootstrap, ko, ArrayDataProvider, ModuleUtils) {
+  function (Bootstrap, ko, ArrayDataProvider, ModuleUtils, KeySet) {
     Bootstrap.whenDocumentReady().then(
       function () {
         function init() {
             function ViewModel () {
-                this.pageTitle = ko.observable();
-                this.navLinks = {
-                    'home': {label: 'Home', pageTitle: 'OracleJET Examples'},
-                    'example1': {label: 'Markdown Editor', pageTitle: 'Markdown Editor Example'},
-                    'example2': {label: 'Github Commits', pageTitle: 'GitHub Commits Example'},
-                    'example3': {label: 'Grid Component', pageTitle: 'Grid Component Example'},
-                    'example4': {label: 'Tree View', pageTitle: 'Tree View Example'},
-                };
-
+                // === Setup default module router
                 this.moduleConfig = ko.observable({"view": [], "viewModel": null});
 
                 this.loadModuleConfig = function (name) {
@@ -86,6 +79,16 @@ require(['ojs/ojbootstrap',
                     });
                 };
 
+                // === Setup Nav Links
+                this.pageTitle = ko.observable();
+                this.navLinks = {
+                    'home': {label: 'Home', pageTitle: 'OracleJET Examples', isDefault: true},
+                    'example1': {label: 'Markdown Editor', pageTitle: 'Markdown Editor Example'},
+                    'example2': {label: 'Github Commits', pageTitle: 'GitHub Commits Example'},
+                    'example3': {label: 'Grid Component', pageTitle: 'Grid Component Example'},
+                    'example4': {label: 'Tree View', pageTitle: 'Tree View Example'},
+                };
+
                 // Build array from the object with key as the 'value' property
                 let navLinksArray = Object.entries(this.navLinks).map(([k, v]) => {
                     v.value = k;
@@ -103,6 +106,15 @@ require(['ojs/ojbootstrap',
 
                     this.loadModuleConfig(key);
                 }.bind(this);
+
+                // === Setup default navLink selection & load module
+                let selectedLink = Object.values(this.navLinks).find(e => e.isDefault);
+                if (!selectedLink) {
+                    selectedLink = this.navLinks['home'];
+                }
+                this.selectedNavLink = new KeySet.KeySetImpl([selectedLink.value]);
+                this.pageTitle(selectedLink.pageTitle);
+                this.loadModuleConfig(selectedLink.value);
             }
 
             let app = new ViewModel();

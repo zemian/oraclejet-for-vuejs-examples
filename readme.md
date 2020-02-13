@@ -26,7 +26,7 @@ elements globally. This affected some of OJET own theme styling. So a fix
 is added to prefix some elements with #demo container selector to prevent this
 problem.
 
-## VueJS Examples
+## Examples List
 
 A copy of the VueJS (v2) Examples under `vuejs-examples` 
 directory. These examples should able to run by opening the `index.html` 
@@ -34,15 +34,15 @@ in a browser without running a web server.
 
 Examples List:
 
-* Markdown Editor
-* GitHub Commits
-* Grid Component
-* Tree View
-* SVG Graph
-* Modal Component
-* Elastic Header
-* Wrapper Component
-* Realtime with deepstreamHub
-* Firebase + Validation
-* TodoMVC
-* HackerNews Clone
+    [x] Markdown Editor
+    [x] GitHub Commits
+    [x] Grid Component
+    [x] Tree View
+    [ ] SVG Graph
+    [ ] Modal Component
+    [ ] Elastic Header
+    [ ] Wrapper Component
+    [ ] Realtime with deepstreamHub
+    [ ] Firebase + Validation
+    [ ] TodoMVC
+    [ ] HackerNews Clone

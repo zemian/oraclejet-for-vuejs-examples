@@ -83,10 +83,10 @@ require(['ojs/ojbootstrap',
                 this.pageTitle = ko.observable();
                 this.navLinks = {
                     'home': {label: 'Home', pageTitle: 'OracleJET Examples', isDefault: true},
-                    'example1': {label: 'Markdown Editor', pageTitle: 'Markdown Editor Example'},
-                    'example2': {label: 'Github Commits', pageTitle: 'GitHub Commits Example'},
-                    'example3': {label: 'Grid Component', pageTitle: 'Grid Component Example'},
-                    'example4': {label: 'Tree View', pageTitle: 'Tree View Example'},
+                    'markdown': {label: 'Markdown Editor', pageTitle: 'Markdown Editor Example'},
+                    'commits': {label: 'Github Commits', pageTitle: 'GitHub Commits Example'},
+                    'grid': {label: 'Grid Component', pageTitle: 'Grid Component Example'},
+                    'tree': {label: 'Tree View', pageTitle: 'Tree View Example'},
                 };
 
                 // Build array from the object with key as the 'value' property

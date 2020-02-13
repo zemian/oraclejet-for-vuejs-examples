@@ -5,13 +5,13 @@
              on-click="[[toggle]]"
              on-dblclick="[[changeType]]">
             <oj-bind-text value="[[model.name]]"></oj-bind-text>
-            <span data-bind="if: isFolder() && hasChildren()">
+            <span data-bind="if: isFolder() || childrenObsArray()">
                     <oj-bind-text value="[[open() ? '[-]' : '[+]']]"></oj-bind-text>
             </span>
         </div>
-        <oj-bind-if test="[[(isFolder() && open()) && hasChildren()]]">
+        <oj-bind-if test="[[(isFolder() && open()) && childrenObsArray()]]">
             <ul>
-                <oj-bind-for-each data="[[observableChildren]]">
+                <oj-bind-for-each data="[[childrenObsArray()]]">
                     <template>
                         <tree-item
                                 class="item"

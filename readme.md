@@ -36,15 +36,15 @@ in a browser without running a web server.
 
 Re-implementation Completion List:
 
-    [x] Markdown Editor
-    [x] GitHub Commits
-    [x] Grid Component
-    [x] Tree View
-    [ ] SVG Graph
-    [ ] Modal Component
-    [ ] Elastic Header
-    [ ] Wrapper Component
-    [ ] Realtime with deepstreamHub
-    [ ] Firebase + Validation
-    [ ] TodoMVC
-    [ ] HackerNews Clone
+- [x] Markdown Editor
+- [x] GitHub Commits
+- [x] Grid Component
+- [x] Tree View
+- [ ] SVG Graph
+- [ ] Modal Component
+- [ ] Elastic Header
+- [ ] Wrapper Component
+- [ ] Realtime with deepstreamHub
+- [ ] Firebase + Validation
+- [ ] TodoMVC
+- [ ] HackerNews Clone

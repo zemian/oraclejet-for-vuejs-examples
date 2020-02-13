@@ -60,10 +60,11 @@ require(['ojs/ojbootstrap',
             function ViewModel () {
                 this.pageTitle = ko.observable();
                 this.navLinks = {
-                    'home': {isDefault: true, label: 'Home', pageTitle: 'OracleJET Examples'},
+                    'home': {label: 'Home', pageTitle: 'OracleJET Examples'},
                     'example1': {label: 'Markdown Editor', pageTitle: 'Markdown Editor Example'},
                     'example2': {label: 'Github Commits', pageTitle: 'GitHub Commits Example'},
-                    'example3': {label: 'Grid Component', pageTitle: 'Grid Component Example'}
+                    'example3': {label: 'Grid Component', pageTitle: 'Grid Component Example'},
+                    'example4': {label: 'Tree View', pageTitle: 'Tree View Example'},
                 };
 
                 this.moduleConfig = ko.observable({"view": [], "viewModel": null});

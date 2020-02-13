@@ -1,0 +1,15 @@
+#demo {
+    font-family: Menlo, Consolas, monospace;
+    color: #444;
+}
+#demo .item {
+    cursor: pointer;
+}
+#demo .bold {
+    font-weight: bold;
+}
+#demo ul {
+    padding-left: 1em;
+    line-height: 1.5em;
+    list-style-type: dot;
+}

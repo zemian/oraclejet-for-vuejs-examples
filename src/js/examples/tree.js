@@ -13,8 +13,8 @@ on-click and on-dblclick attributes used in html view.
  */
 define(['knockout',
         'ojs/ojcomposite',
-        'ojs/ojknockout',],
-    function (ko, Composite, ) {
+        'ojs/ojknockout'],
+    function (ko, Composite) {
 
         function TreeItemViewModel(context) {
             this.model = context.properties.model;

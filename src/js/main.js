@@ -55,7 +55,7 @@ require(['text!navLinks.json',
         'ojs/ojmodule-element',
         'ojs/ojknockout',
         'ojs/ojlistview'],
-  function (navLinksJson, Bootstrap, ko, ArrayDataProvider, ModuleUtils, KeySet) {
+  function (navLinksJsonText, Bootstrap, ko, ArrayDataProvider, ModuleUtils, KeySet) {
     Bootstrap.whenDocumentReady().then(
       function () {
         function init() {
@@ -81,7 +81,7 @@ require(['text!navLinks.json',
                 };
 
                 // === Setup Nav Links
-                this.navLinks = JSON.parse(navLinksJson);
+                this.navLinks = JSON.parse(navLinksJsonText);
                 this.pageTitle = ko.observable();
 
                 // Build array from the object with key as the 'value' property

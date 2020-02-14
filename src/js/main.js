@@ -46,7 +46,8 @@ require.config({
     }
 });
 
-require(['ojs/ojbootstrap',
+require(['text!navLinks.json',
+        'ojs/ojbootstrap',
         'knockout',
         'ojs/ojarraydataprovider',
         'ojs/ojmodule-element-utils',
@@ -54,7 +55,7 @@ require(['ojs/ojbootstrap',
         'ojs/ojmodule-element',
         'ojs/ojknockout',
         'ojs/ojlistview'],
-  function (Bootstrap, ko, ArrayDataProvider, ModuleUtils, KeySet) {
+  function (navLinksJson, Bootstrap, ko, ArrayDataProvider, ModuleUtils, KeySet) {
     Bootstrap.whenDocumentReady().then(
       function () {
         function init() {
@@ -80,14 +81,8 @@ require(['ojs/ojbootstrap',
                 };
 
                 // === Setup Nav Links
+                this.navLinks = JSON.parse(navLinksJson);
                 this.pageTitle = ko.observable();
-                this.navLinks = {
-                    'home': {label: 'Home', pageTitle: 'OracleJET Examples', isDefault: true},
-                    'markdown': {label: 'Markdown Editor', pageTitle: 'Markdown Editor Example'},
-                    'commits': {label: 'Github Commits', pageTitle: 'GitHub Commits Example'},
-                    'grid': {label: 'Grid Component', pageTitle: 'Grid Component Example'},
-                    'tree': {label: 'Tree View', pageTitle: 'Tree View Example'},
-                };
 
                 // Build array from the object with key as the 'value' property
                 let navLinksArray = Object.entries(this.navLinks).map(([k, v]) => {

@@ -64,10 +64,10 @@ require(['ojs/ojbootstrap',
 
                 this.loadModuleConfig = function (name) {
                     let modName = "examples";
-                    let viewPath = `${modName}/views/${name}.html`;
-                    let modelPath = `${modName}/models/${name}`;
+                    let viewPath = `${modName}/${name}.html`;
+                    let modelPath = `${modName}/${name}`;
                     let cssPromise = new Promise(function(resolve, reject) {
-                        require([`css!${modName}/views/${name}.css`], resolve, reject);
+                        require([`css!${modName}/${name}.css`], resolve, reject);
                     });
                     let masterPromise = Promise.all([
                         ModuleUtils.createView({"viewPath": viewPath}),

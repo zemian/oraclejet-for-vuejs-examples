@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Vue Learning</title>
+
+    <meta charset="UTF-8">
+  </head>
+  <body>
+
+    <template id="my-component-template">
+      <div id="my-component">{{message}}</div>
+    </template>
+    <div id="app">
+      <my-component></my-component>
+    </div>
+
+    <script type="text/javascript" src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+
+    <script>
+      new Vue({
+        el: "#app",
+        components: {
+          'my-component': {
+            template: '#my-component-template',
+            data: function() {
+              return {
+                message: "Hello World"
+              };
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Vue Learning</title>
+
+    <meta charset="UTF-8">
+  </head>
+  <body>
+
+    <template id="my-component-template">
+      <circle cx="100" cy="100" r="80"></circle>
+    </template>
+    <div id="app">
+      <svg width="200" height="200">
+        <!-- Note that Vue 2.0 will always replace the element they are
+          bound to! Hence using component inside nested svg works
+          fine! -->
+        <my-component></my-component>
+      </svg>
+    </div>
+
+    <script type="text/javascript" src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+
+    <script>
+      new Vue({
+        el: "#app",
+        components: {
+          'my-component': {
+            template: '#my-component-template',
+            data: function() {
+              return {
+                message: "Hello World"
+              };
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

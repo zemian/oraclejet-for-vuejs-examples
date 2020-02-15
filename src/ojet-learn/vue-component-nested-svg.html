@@ -12,9 +12,14 @@
     </template>
     <div id="app">
       <svg width="200" height="200">
-        <!-- Note that Vue 2.0 will always replace the element they are
+        <!-- Note that Vue 2.x will always replace the element they are
           bound to! Hence using component inside nested svg works
-          fine! -->
+          fine!
+
+          In Vue 1.x, it used to have a "replace" flag to control
+          the replacement of the element node, but v2 no longer does this.
+          https://vuejs.org/v2/guide/migration.html#replace-false-removed
+          -->
         <my-component></my-component>
       </svg>
     </div>

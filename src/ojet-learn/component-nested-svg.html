@@ -12,10 +12,14 @@
   <body>
 
     <template id="my-component-template">
-      Hello World
+      <circle cx="100" cy="100" r="80"></circle>
     </template>
     <div id="app">
-      <my-component></my-component>
+      <svg width="200" height="200">
+        <!-- NOTE: You can't nest svg content in a component?
+         OJET will not bind this element at all -->
+        <my-component></my-component>
+      </svg>
     </div>
 
     <script type="text/javascript" src="/js/libs/require/require.js"></script>

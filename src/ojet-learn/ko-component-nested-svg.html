@@ -12,13 +12,25 @@
     </template>
     <div id="app">
       <svg width="200" height="200">
-        <!-- KO bind/connect this element, but the element node will remain and
-        will not work with svn as container? -->
+
+        <!-- The KO bind/connect this element, but the element node will remain and
+        will not work with svn as container?
         <my-component></my-component>
+        -->
+
+        <!-- Here is a KO Workaround is to use comment based binding without container
+        TODO: But it will still not render?
+
+        Are these related?
+        - https://github.com/knockout/knockout/issues/820
+        - http://jsfiddle.net/dflor003/6kwmrLs8/ (someone able to get it to work!)
+        -->
+        <!-- ko component: {name: "my-component"} -->
+        <!-- /ko -->
       </svg>
     </div>
 
-    <script type="text/javascript" src="/js/libs/require/require.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/requirejs@2.3.6/require.js"></script>
 
     <script>
       requirejs.config({
@@ -31,8 +43,8 @@
               'knockout', 'jquery'],
               function(ko, $){
 
-        function MyComponent(context) {
-          console.log("my-component context", context);
+        function MyComponent() {
+          console.log("my-component has binded");
         }
 
         function AppVM() {

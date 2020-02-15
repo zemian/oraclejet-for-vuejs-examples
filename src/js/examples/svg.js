@@ -1,9 +1,13 @@
 /*
  */
 define(['knockout',
+        'examples/svg-ko-template-loader',
         'ojs/ojcomposite',
         'ojs/ojknockout'],
-    function (ko, Composite) {
+    function (ko, SvgTemplateLoader, Composite) {
+
+        // Push template loader to the front of the loader list
+        ko.components.loaders.unshift(new SvgTemplateLoader());
 
         function valueToPoint(value, index, total) {
             var x     = 0;
@@ -86,10 +90,11 @@ define(['knockout',
             // }
 
             this.connected = () => {
+                // This is not working!
+                // TODO: What's the proper way to use KO template loader?
                 Composite.register("svg-polygraph", {
                     viewModel: SvgPolygraphVM,
-                    view: document.getElementById("svg-polygraph-template").innerHTML,
-
+                    view: { svgTemplate: 'svg-polygraph-template' },
                 });
 
                 // Composite.register("svg-axis-label", {

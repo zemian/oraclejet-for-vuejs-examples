@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>OJET Learning</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1">
+    <link rel="icon" href="css/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/alta/8.0.0/web/alta.css" id="css" />
+    <link rel="stylesheet" href="/css/app.css" type="text/css"/>
+  </head>
+  <body>
+
+    <template id="my-component-template">
+      Hello World
+    </template>
+    <div id="app">
+      <my-component></my-component>
+    </div>
+
+    <script type="text/javascript" src="/js/libs/require/require.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+
+    <script>
+      requirejs.config({baseUrl: '../js'});
+      require([
+              'knockout',
+              'ojs/ojbootstrap',
+              'ojs/ojcomposite',
+              'ojs/ojknockout'],
+              function(ko, Bootstrap, Composite){
+
+        function MyComponent(context) {
+          console.log("my-component context", context);
+        }
+
+        function AppVM() {
+          this.message = "Hello";
+        }
+
+        Composite.register("my-component", {
+          viewModel: MyComponent,
+          view: document.getElementById("my-component-template").innerHTML,
+        });
+        Bootstrap.whenDocumentReady().then(function() {
+          ko.applyBindings(new AppVM(), document.getElementById("app"));
+        });
+      });
+    </script>
+  </body>
+</html>

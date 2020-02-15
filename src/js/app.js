@@ -19,7 +19,7 @@ require(['text!navLinks.json',
     Bootstrap.whenDocumentReady().then(
       function () {
         function init() {
-            function ViewModel () {
+            function AppViewModel () {
                 // === Setup default module router
                 this.moduleConfig = ko.observable({"view": [], "viewModel": null});
 
@@ -72,9 +72,9 @@ require(['text!navLinks.json',
                 this.loadModuleConfig(selectedLink.value);
             }
 
-            let app = new ViewModel();
+            let app = new AppViewModel();
 
-            // Bind your ViewModel for the content of the whole page body.
+            // Bind your AppViewModel for the content of the whole page body.
             ko.applyBindings(app, document.getElementById('app'));
         }
 

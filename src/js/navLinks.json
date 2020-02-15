@@ -1,8 +1,7 @@
 {
   "home": {
     "label": "Home",
-    "pageTitle": "OracleJET Examples",
-    "isDefault": true
+    "pageTitle": "OracleJET Examples"
   },
   "markdown": {
     "label": "Markdown Editor",
@@ -19,5 +18,10 @@
   "tree": {
     "label": "Tree View",
     "pageTitle": "Tree View Example"
+  },
+  "svg": {
+    "label": "SVG Graph",
+    "pageTitle": "SVG Graph Example",
+    "isDefault": true
   }
 }

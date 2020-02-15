@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Knockout Learning</title>
+
+    <meta charset="UTF-8">
+  </head>
+  <body>
+
+    <div id="app">
+      <span data-bind="text: message"></span>
+    </div>
+
+    <script type="text/javascript" src="/js/libs/require/require.js"></script>
+
+    <script>
+      requirejs.config({
+        paths:{
+          'knockout': 'https://unpkg.com/knockout@3.5.1/build/output/knockout-latest',
+          'jquery': 'https://unpkg.com/jquery@3.4.1/dist/jquery'
+        }
+      });
+      require([
+              'knockout', 'jquery'],
+              function(ko, $){
+
+        function AppVM() {
+          this.message = "Hello World";
+        }
+
+        $(function() {
+          ko.applyBindings(new AppVM(), document.getElementById("app"));
+        });
+      });
+    </script>
+  </body>
+</html>

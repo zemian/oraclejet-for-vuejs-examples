@@ -36,7 +36,7 @@
         </template>
     </oj-bind-for-each>
     <form id="add">
-        <input name="newlabel" :value="[[newLabel]]">
+        <input name="newlabel" data-bind="textInput: newLabel">
         <button on-click="[[add]]">Add a Stat</button>
     </form>
     <pre id="raw"><oj-bind-text value="[[statsJsonText]]"></oj-bind-text></pre>

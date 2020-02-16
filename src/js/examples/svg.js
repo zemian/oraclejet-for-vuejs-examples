@@ -62,12 +62,14 @@ define(['knockout',
 
             this.add = (e) => {
                 e.preventDefault();
-                if (!this.newLabel) return;
+                if (!this.newLabel()) {
+                    return;
+                }
                 this.stats.push({
-                    label: this.newLabel,
+                    label: this.newLabel(),
                     value: ko.observable(100)
                 });
-                this.newLabel = '';
+                this.newLabel('');
             };
 
             this.remove = (stat) => {

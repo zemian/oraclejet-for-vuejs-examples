@@ -1,7 +1,8 @@
 # About oraclejet-for-vuejs-examples
 
 Here is an Oracle JET project that re-implements some of the 
-VueJS Examples from https://vuejs.org/v2/examples/.
+VueJS Examples. Walking through this project code will help you
+learn how to use and compare the two libraries and their capabilities.
 
 [Live Demo is Here](https://raw.githack.com/zemian/oraclejet-for-vuejs-examples-demo/master/web/index.html)
 

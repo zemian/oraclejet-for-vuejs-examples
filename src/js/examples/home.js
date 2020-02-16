@@ -1,7 +1,7 @@
 define([],
     function () {
-        function ViewModel() {
+        function ExampleViewModel() {
         }
-        return new ViewModel();
+        return new ExampleViewModel();
     }
 );

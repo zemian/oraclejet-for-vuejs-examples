@@ -9,7 +9,7 @@ define(['knockout',
         'ojs/ojradioset'],
     function (ko) {
 
-        function ViewModel() {
+        function ExampleViewModel() {
             var self = this;
 
             this.branches = ko.observableArray(['master', 'dev']);
@@ -49,6 +49,6 @@ define(['knockout',
             };
         }
 
-        return new ViewModel();
+        return new ExampleViewModel();
     }
 );

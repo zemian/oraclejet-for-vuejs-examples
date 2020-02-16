@@ -17,7 +17,7 @@ define(['knockout',
         'ojs/ojknockout'],
     function (ko) {
 
-        function ViewModel() {
+        function ExampleViewModel() {
             this.stats = ko.observableArray([
                 { label: 'A', value: ko.observable(100) },
                 { label: 'B', value: ko.observable(100) },
@@ -88,6 +88,6 @@ define(['knockout',
             };
         }
 
-        return new ViewModel();
+        return new ExampleViewModel();
     }
 );

@@ -26,7 +26,7 @@
         <template>
         <div>
             <label><oj-bind-text value="[[$current.data.label]]"></oj-bind-text></label>
-            <input type="range" :value="{{$current.data.value}}" min="0" max="100">
+            <input data-bind="textInput: $current.data.value" type="range" min="0" max="100">
             <span><oj-bind-text value="[[$current.data.value]]"></oj-bind-text></span>
             <button on-click="[[function(event, current){ remove(current.data); }]]" class="remove">X</button>
         </div>

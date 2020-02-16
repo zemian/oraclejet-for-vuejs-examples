@@ -16,8 +16,8 @@
                 <template>
                     <!-- We have to calculate twice with valueToPoint here because
                     there is no nice way to store a temp variable in a loop! -->
-                    <text :x="[[valueToPoint($current.data.value + 10, $current.index, stats.length).x]]"
-                          :y="[[valueToPoint($current.data.value + 10, $current.index, stats.length).y]]">
+                    <text :x="[[valueToPoint($current.data.value + 10, $current.index, stats().length).x]]"
+                          :y="[[valueToPoint($current.data.value + 10, $current.index, stats().length).y]]">
                         <oj-bind-text value="[[$current.data.label]]"></oj-bind-text>
                     </text>
                 </template>
@@ -25,7 +25,7 @@
         </g>
     </svg>
     <!-- controls -->
-    <oj-bind-for-each data="[[statsObsArray]]">
+    <oj-bind-for-each data="[[stats]]">
         <template>
         <div>
             <label><oj-bind-text value="[[$current.data.label]]"></oj-bind-text></label>

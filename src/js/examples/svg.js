@@ -20,7 +20,7 @@ define(['knockout',
         // }
 
         function ViewModel() {
-            this.stats = [
+            this.stats_ = [
                 { label: 'A', value: 100 },
                 { label: 'B', value: 100 },
                 { label: 'C', value: 100 },
@@ -28,6 +28,11 @@ define(['knockout',
                 { label: 'E', value: 100 },
                 { label: 'F', value: 100 }
             ];
+            this.stats = ko.observableArray(this.stats_);
+            this.newLabel = ko.observable('');
+            this.statsJsonText = ko.computed(()=> {
+                return JSON.stringify(this.stats(), null, 2);
+            });
 
             this.valueToPoint = function(value, index, total) {
                 var x     = 0;
@@ -44,19 +49,13 @@ define(['knockout',
             };
 
             this.points = ko.computed(function() {
-                var total = this.stats.length;
+                var total = this.stats().length;
                 var valueToPoint = this.valueToPoint;
-                return this.stats.map(function (stat, i) {
+                return this.stats().map(function (stat, i) {
                     var point = valueToPoint(stat.value, i, total);
                     return point.x + ',' + point.y
                 }).join(' ');
             }, this);
-
-            this.statsObsArray = ko.observableArray(this.stats);
-            this.newLabel = ko.observable('');
-            this.statsJsonText = ko.computed(()=> {
-                return JSON.stringify(this.statsObsArray(), null, 2);
-            });
 
             this.add = (e) => {
                 e.preventDefault();
@@ -69,7 +68,7 @@ define(['knockout',
             };
 
             this.remove = (stat) => {
-                if (this.stats.length > 3) {
+                if (this.stats().length > 3) {
                     this.stats.splice(this.stats.indexOf(stat), 1);
                 } else {
                     alert('Can\'t delete more!');

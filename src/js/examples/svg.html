@@ -1,17 +1,3 @@
-<!-- template for the polygraph component. -->
-<script type="text/x-template" id="svg-polygraph-template">
-    <g>
-<!--        <polygon :points="[[points]]"></polygon>-->
-        <circle cx="100" cy="100" r="80"></circle>
-<!--        <axis-label-->
-<!--                v-for="(stat, index) in stats"-->
-<!--                :stat="stat"-->
-<!--                :index="index"-->
-<!--                :total="stats.length">-->
-<!--        </axis-label>-->
-    </g>
-</script>
-
 <!-- template for the axis label component. -->
 <script type="text/x-template" id="svg-axis-label-template">axis-label
     <text :x="point.x" :y="point.y">{{stat.label}}</text>
@@ -19,26 +5,41 @@
 
 <!-- demo root element -->
 <div id="demo">
-    <!-- Use the component -->
+    <!-- The OJET/KO can't handle svg with nested components!
+    We will have to not use component and direct svg and model binding there.
+    -->
     <svg width="200" height="200">
-        <svg-polygraph></svg-polygraph>
+        <g>
+            <polygon :points="[[points]]"></polygon>
+            <circle cx="100" cy="100" r="80"></circle>
+            <oj-bind-for-each data="[[stats]]">
+                <template>
+                    <!-- We have to calculate twice with valueToPoint here because
+                    there is no nice way to store a temp variable in a loop! -->
+                    <text :x="[[valueToPoint($current.data.value + 10, $current.index, stats.length).x]]"
+                          :y="[[valueToPoint($current.data.value + 10, $current.index, stats.length).y]]">
+                        <oj-bind-text value="[[$current.data.label]]"></oj-bind-text>
+                    </text>
+                </template>
+            </oj-bind-for-each>
+        </g>
     </svg>
     <!-- controls -->
-<!--    <oj-bind-for-each data="[[statsObsArray]]">-->
-<!--        <template>-->
-<!--        <div>-->
-<!--            <label><oj-bind-text value="[[$current.data.label]]"></oj-bind-text></label>-->
-<!--            <input type="range" :value="[[$current.data.value]]" min="0" max="100">-->
-<!--            <span><oj-bind-text value="[[$current.data.value]]"></oj-bind-text></span>-->
-<!--            <button on-click="remove($current.data)" class="remove">X</button>-->
-<!--        </div>-->
-<!--        </template>-->
-<!--    </oj-bind-for-each>-->
-<!--    <form id="add">-->
-<!--        <input name="newlabel" :value="[[newLabel]]">-->
-<!--        <button on-click="add">Add a Stat</button>-->
-<!--    </form>-->
-<!--    <pre id="raw"><oj-bind-text value="[[statsJsonText]]"></oj-bind-text></pre>-->
+    <oj-bind-for-each data="[[statsObsArray]]">
+        <template>
+        <div>
+            <label><oj-bind-text value="[[$current.data.label]]"></oj-bind-text></label>
+            <input type="range" :value="[[$current.data.value]]" min="0" max="100">
+            <span><oj-bind-text value="[[$current.data.value]]"></oj-bind-text></span>
+            <button on-click="remove($current.data)" class="remove">X</button>
+        </div>
+        </template>
+    </oj-bind-for-each>
+    <form id="add">
+        <input name="newlabel" :value="[[newLabel]]">
+        <button on-click="[[add]]">Add a Stat</button>
+    </form>
+    <pre id="raw"><oj-bind-text value="[[statsJsonText]]"></oj-bind-text></pre>
 </div>
 
 <!--<p style="font-size:12px">* input[type="range"] requires IE10 or above.</p>-->

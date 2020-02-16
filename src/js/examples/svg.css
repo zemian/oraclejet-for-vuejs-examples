@@ -1,20 +1,20 @@
-polygon {
+#demo polygon {
     fill: #42b983;
     opacity: .75;
 }
 
-circle {
+#demo circle {
     fill: transparent;
     stroke: #999;
 }
 
-text {
+#demo text {
     font-family: Helvetica Neue, Arial, sans-serif;
     font-size: 10px;
     fill: #666;
 }
 
-label {
+#demo label {
     display: inline-block;
     margin-left: 10px;
     width: 20px;
@@ -23,5 +23,5 @@ label {
 #raw {
     position: absolute;
     top: 0;
-    left: 300px;
+    left: 600px;
 }

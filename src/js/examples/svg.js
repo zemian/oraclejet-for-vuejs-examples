@@ -20,17 +20,20 @@ define(['knockout',
         // }
 
         function ViewModel() {
-            this.stats_ = [
-                { label: 'A', value: 100 },
-                { label: 'B', value: 100 },
-                { label: 'C', value: 100 },
-                { label: 'D', value: 100 },
-                { label: 'E', value: 100 },
-                { label: 'F', value: 100 }
-            ];
-            this.stats = ko.observableArray(this.stats_);
+            this.stats = ko.observableArray([
+                { label: 'A', value: ko.observable(100) },
+                { label: 'B', value: ko.observable(100) },
+                { label: 'C', value: ko.observable(100) },
+                { label: 'D', value: ko.observable(100) },
+                { label: 'E', value: ko.observable(100) },
+                { label: 'F', value: ko.observable(100) }
+            ]);
             this.newLabel = ko.observable('');
             this.statsJsonText = ko.computed(()=> {
+                let stat_ = this.stats().map(e => {
+                    e.value_ = e.value();
+                    return e;
+                });
                 return JSON.stringify(this.stats(), null, 2);
             });
 
@@ -52,7 +55,7 @@ define(['knockout',
                 var total = this.stats().length;
                 var valueToPoint = this.valueToPoint;
                 return this.stats().map(function (stat, i) {
-                    var point = valueToPoint(stat.value, i, total);
+                    var point = valueToPoint(stat.value(), i, total);
                     return point.x + ',' + point.y
                 }).join(' ');
             }, this);
@@ -62,7 +65,7 @@ define(['knockout',
                 if (!this.newLabel) return;
                 this.stats.push({
                     label: this.newLabel,
-                    value: 100
+                    value: ko.observable(100)
                 });
                 this.newLabel = '';
             };

@@ -9,7 +9,7 @@ learn how to use and compare the two libraries and their capabilities.
 We also have some [screenshots here](docs/screenshots.md).
 
 [Oracle JET](https://www.oracle.com/webfolder/technetwork/jet/index.html) and 
-[VueJS]([https://vuejs.org/) are both a open source JavaScript libraries that 
+[VueJS](https://vuejs.org/) are both a open source JavaScript libraries that 
 help you build UI application easily. You can read more details on their website
 to find out more.
 

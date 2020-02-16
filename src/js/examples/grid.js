@@ -68,7 +68,7 @@ define(['knockout',
          };
      }
 
-     function ViewModel() {
+     function ExampleViewModel() {
          this.searchQuery = ko.observable('');
          this.gridColumns = ['name', 'power'];
          this.gridData = [
@@ -93,6 +93,6 @@ define(['knockout',
          };
      }
 
-     return new ViewModel();
+     return new ExampleViewModel();
   }
 );

@@ -19,5 +19,9 @@
   "tree": {
     "label": "Tree View",
     "pageTitle": "Tree View Example"
+  },
+  "svg": {
+    "label": "SVG Graph",
+    "pageTitle": "SVG Graph Example"
   }
 }

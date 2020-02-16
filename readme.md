@@ -1,9 +1,41 @@
-Here is a Oracle JET project that re-implements some of the 
-VueJS Examples from https://vuejs.org/v2/examples/.
+# About oraclejet-for-vuejs-examples
 
-To get started:
+Here is an Oracle JET project that re-implements some of the 
+VueJS Examples. Walking through this project code will help you
+learn how to use and compare the two libraries and their capabilities.
+
+[Live Demo is Here](https://raw.githack.com/zemian/oraclejet-for-vuejs-examples-demo/master/web/index.html)
+
+We also have some [screenshots here](docs/screenshots.md).
+
+[Oracle JET](https://www.oracle.com/webfolder/technetwork/jet/index.html) and 
+[VueJS](https://vuejs.org/) are both a open source JavaScript libraries that 
+help you build UI application easily. You can read more details on their website
+to find out more.
+
+## Credits and Disclaimer
+
+- This `oraclejet-for-vuejs-examples` project is written by Zemian Deng.
+  I have merely ported the code from VueJS to OracleJET. All the looks, styling, 
+  behaviors and functionality are from modified version of original VueJS examples code.
+  All ideas and behaviors are from original VueJS and not from me. I have only done
+  enough work to convert the demo from one framework to another.
+- This project solely used for learning purpose. Use it at your own risk.
+- Though I am a Oracle employee, I do not work directly
+  on the OracleJET development team. All the notes on re-implementations and comparision
+  are based on my own opinion. It does not reflect nor represent my employer in any way. 
+- The original VueJS examples are from their source repository and credits below to their 
+  original authors.
+  (there is a copy in `vuejs-examples` directory for convenience)
+- Oracle JET library itself is an open source library.
+
+## How to Get Started On Development
+
+You need to install [NodeJS](https://nodejs.org/en/) first, then clone this project to 
+get started in a terminal like this:
 
 ```
+cd oraclejet-for-vuejs-examples
 npm install
 npx ojet serve
 # open http://localhost:8080
@@ -12,12 +44,6 @@ npx ojet serve
 In each example, there are some developer notes and tips in
 comparing the two framework usage. To see more details, open each
 file under `src/js/examples` folder.
-
-## Some Oracle JET Example Screenshots
-
-![markdown.png](docs/markdown.png)
-![commits.png](docs/commits.png)
-![grid.png](docs/grid.png)
 
 ## Fixing Example CSS files
 
@@ -40,7 +66,7 @@ Re-implementation List:
 - [x] GitHub Commits
 - [x] Grid Component
 - [x] Tree View
-- [ ] SVG Graph
+- [x] SVG Graph
 - [ ] Modal Component
 - [ ] Elastic Header
 - [ ] Wrapper Component

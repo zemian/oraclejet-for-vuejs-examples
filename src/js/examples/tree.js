@@ -52,7 +52,7 @@ define(['knockout',
             };
         }
 
-        function ViewModel() {
+        function ExampleViewModel() {
             // demo data
             var data = {
                 name: 'My Tree',
@@ -97,6 +97,6 @@ define(['knockout',
             };
         }
 
-        return new ViewModel();
+        return new ExampleViewModel();
     }
 );

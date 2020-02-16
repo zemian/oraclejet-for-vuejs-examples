@@ -17,7 +17,7 @@ define(['knockout',
         'ojs/ojknockout'],
     function (ko, marked, _) {
 
-        function ViewModel() {
+        function ExampleViewModel() {
             this.editorInput = ko.observable("# Hello");
             this.compiledMarkdown = ko.computed(function () {
                 let result = marked(this.editorInput(), {sanitize: true});
@@ -31,6 +31,6 @@ define(['knockout',
             }, 300);
         }
 
-        return new ViewModel();
+        return new ExampleViewModel();
     }
 );

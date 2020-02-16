@@ -40,7 +40,7 @@ Re-implementation List:
 - [x] GitHub Commits
 - [x] Grid Component
 - [x] Tree View
-- [ ] SVG Graph
+- [x] SVG Graph
 - [ ] Modal Component
 - [ ] Elastic Header
 - [ ] Wrapper Component

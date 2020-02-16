@@ -1,0 +1,42 @@
+<!-- template for the axis label component. -->
+<script type="text/x-template" id="svg-axis-label-template">axis-label
+    <text :x="point.x" :y="point.y">{{stat.label}}</text>
+</script>
+
+<!-- demo root element -->
+<div id="demo">
+    <!-- The OJET/KO can't handle svg with nested components!
+    We will have to not use component and direct svg and model binding there.
+    -->
+    <svg width="200" height="200">
+        <g>
+            <polygon :points="[[points]]"></polygon>
+            <circle cx="100" cy="100" r="80"></circle>
+            <oj-bind-for-each data="[[pointLabels]]">
+                <template>
+                    <text :x="[[$current.data.point.x]]" :y="[[$current.data.point.y]]">
+                        <oj-bind-text value="[[$current.data.label]]"></oj-bind-text>
+                    </text>
+                </template>
+            </oj-bind-for-each>
+        </g>
+    </svg>
+    <!-- controls -->
+    <oj-bind-for-each data="[[stats]]">
+        <template>
+        <div>
+            <label><oj-bind-text value="[[$current.data.label]]"></oj-bind-text></label>
+            <input data-bind="textInput: $current.data.value" type="range" min="0" max="100">
+            <span><oj-bind-text value="[[$current.data.value]]"></oj-bind-text></span>
+            <button on-click="[[function(event, current){ remove(current.data); }]]" class="remove">X</button>
+        </div>
+        </template>
+    </oj-bind-for-each>
+    <form id="add">
+        <input name="newlabel" data-bind="textInput: newLabel">
+        <button on-click="[[add]]">Add a Stat</button>
+    </form>
+    <pre id="raw"><oj-bind-text value="[[statsJsonText]]"></oj-bind-text></pre>
+</div>
+
+<!--<p style="font-size:12px">* input[type="range"] requires IE10 or above.</p>-->

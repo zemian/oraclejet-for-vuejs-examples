@@ -12,12 +12,9 @@
         <g>
             <polygon :points="[[points]]"></polygon>
             <circle cx="100" cy="100" r="80"></circle>
-            <oj-bind-for-each data="[[stats]]">
+            <oj-bind-for-each data="[[pointLabels]]">
                 <template>
-                    <!-- We have to calculate twice with valueToPoint here because
-                    there is no nice way to store a temp variable in a loop! -->
-                    <text :x="[[valueToPoint($current.data.value() + 10, $current.index, stats().length).x]]"
-                          :y="[[valueToPoint($current.data.value() + 10, $current.index, stats().length).y]]">
+                    <text :x="[[$current.data.point.x]]" :y="[[$current.data.point.y]]">
                         <oj-bind-text value="[[$current.data.label]]"></oj-bind-text>
                     </text>
                 </template>

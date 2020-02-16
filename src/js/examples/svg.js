@@ -60,6 +60,15 @@ define(['knockout',
                 }).join(' ');
             }, this);
 
+            this.pointLabels = ko.computed(function() {
+                var total = this.stats().length;
+                var valueToPoint = this.valueToPoint;
+                return this.stats().map(function (stat, i) {
+                    var point = valueToPoint(stat.value(), i, total);
+                    return {point: point, label: stat.label}
+                });
+            }, this);
+
             this.add = (e) => {
                 e.preventDefault();
                 if (!this.newLabel()) {

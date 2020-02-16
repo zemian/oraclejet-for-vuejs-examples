@@ -1,23 +1,18 @@
 /*
+The OJET/KO will not render 'svg' element using nested component.
+For one the container of custom element is always rendered. (though KO
+can use comment container-less render of the component, but it
+still not able to redraw svg nested content without a custom
+template render loader.) For this reason, we will implement this
+demo using single model and bind all svg data directly.
+
+To make closely UI and control similar to original work as possible,
+we choose to use couple of direct KO binding instead of OJET version
+so the looks and feel of the control input will look the same.
  */
 define(['knockout',
-        'ojs/ojcomposite',
         'ojs/ojknockout'],
-    function (ko, Composite) {
-
-        // function SvgAxisLabelVM(context) {
-        //     this.stat =context.properties.stat;
-        //     this.index =context.properties.index;
-        //     this.total =context.properties.total;
-        //
-        //     this.point = ko.computed(function () {
-        //         return valueToPoint(
-        //             +this.stat.value + 10,
-        //             this.index,
-        //             this.total
-        //         )
-        //     }, this);
-        // }
+    function (ko) {
 
         function ViewModel() {
             this.stats = ko.observableArray([

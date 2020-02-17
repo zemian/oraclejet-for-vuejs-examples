@@ -1,12 +1,17 @@
 /*
-Made this popular Todo MVC app to work with OJET. The CSS is actually need
+Made this popular TodoMVC app to work with OJET. The CSS is actually need
 to rework by combining todomvc/index.css version 2.3.0 and 2.0.4 to get it
 to work properly.
 
 Note also that VueJS has nice key binding that we need to manually detect
 ENTER and ESC to process them here.
 
-Note the localStorage is not working on local testing?
+The storage types for todos item are as follow:
+    id: number
+    title: ko.observable<string>()
+    completed: ko.observable<boolean>()
+Note that we need to convert observable into native types before saving into
+localStorage and convert it back.
  */
 define(['knockout',
     'ojs/ojknockout',
@@ -20,15 +25,26 @@ define(['knockout',
         var STORAGE_KEY = 'todos-vuejs-2.0';
         self.todoStorage = {
             fetch: function () {
+                //localStorage.removeItem(STORAGE_KEY);
                 var todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
                 todos.forEach(function (todo, index) {
+                    //console.log("Restoring ", todo);
                     todo.id = index;
+                    todo.title = ko.observable(todo.title);
+                    todo.completed = ko.observable(todo.completed);
                 });
                 self.todoStorage.uid = todos.length;
                 return todos;
             },
             save: function (todos) {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+                let todos_ = todos.map(e => {
+                    let t = Object.create(e);
+                    t.title = e.title();
+                    t.completed = e.completed();
+                    return t;
+                });
+                //console.log("Saving ", todos_);
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(todos_));
             }
         };
 
@@ -57,6 +73,10 @@ define(['knockout',
         this.editedTodo = ko.observable();
         this.allDone = ko.observable(false);
 
+        this.todos.subscribe((newValue) => {
+            self.todoStorage.save(newValue);
+        });
+
         this.remaining = ko.computed(function(){
             return this.filters.active(this.todos()).length;
         }, this);
@@ -75,7 +95,9 @@ define(['knockout',
         };
 
         this.filteredTodos = ko.computed(function() {
-            return self.filters[this.visibility()](this.todos());
+            let result = self.filters[this.visibility()](this.todos());
+            //console.log(result[0].title());
+            return result;
         }, this);
 
         this.addTodo = (data, event) => {

@@ -121,7 +121,7 @@ define(['knockout',
         };
 
         this.removeCompleted = () => {
-            this.todos(filters.active(this.todos()));
+            this.todos(self.filters.active(this.todos()));
         };
     }
 

@@ -33,17 +33,17 @@
             </oj-bind-for-each>
         </ul>
     </section>
-    <footer class="footer" v-show="todos.length" v-cloak>
+    <footer class="footer" data-bind="visible: todos().length">
         <span class="todo-count">
           <strong><oj-bind-text value="[[remaining]]"></oj-bind-text></strong>
             <oj-bind-text value="[[pluralize(remaining)]]"></oj-bind-text> left
         </span>
         <ul class="filters">
-            <li><a href="#/all" :class="[[{ selected: visibility == 'all' }]]">All</a></li>
-            <li><a href="#/active" :class="[[{ selected: visibility == 'active' }]]">Active</a></li>
-            <li><a href="#/completed" :class="[[{ selected: visibility == 'completed' }]]">Completed</a></li>
+            <li><a href="#/all" :class="[[{ selected: visibility() === 'all' }]]">All</a></li>
+            <li><a href="#/active" :class="[[{ selected: visibility() === 'active' }]]">Active</a></li>
+            <li><a href="#/completed" :class="[[{ selected: visibility() === 'completed' }]]">Completed</a></li>
         </ul>
-        <button class="clear-completed" @click="removeCompleted" v-show="todos.length > remaining">
+        <button class="clear-completed" on-click="[[removeCompleted]]" data-bind="visible: todos().length > remaining()">
             Clear completed
         </button>
     </footer>

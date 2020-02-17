@@ -72,5 +72,5 @@ Re-implementation List:
 - [ ] Wrapper Component
 - [ ] Realtime with deepstreamHub
 - [ ] Firebase + Validation
-- [ ] TodoMVC
+- [x] TodoMVC
 - [ ] HackerNews Clone

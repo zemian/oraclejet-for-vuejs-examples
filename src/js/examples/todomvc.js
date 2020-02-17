@@ -1,3 +1,13 @@
+/*
+Made this popular Todo MVC app to work with OJET. The CSS is actually need
+to rework by combining todomvc/index.css version 2.3.0 and 2.0.4 to get it
+to work properly.
+
+Note also that VueJS has nice key binding that we need to manually detect
+ENTER and ESC to process them here.
+
+Note the localStorage is not working on local testing?
+ */
 define(['knockout',
     'ojs/ojknockout',
     'director'

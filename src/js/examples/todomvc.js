@@ -38,10 +38,10 @@ define(['knockout',
             },
             save: function (todos) {
                 let todos_ = todos.map(e => {
-                    let t = Object.create(e);
-                    t.title = e.title();
-                    t.completed = e.completed();
-                    return t;
+                    let e_ = Object.assign({}, e);
+                    e_.title = e.title();
+                    e_.completed = e.completed();
+                    return e_;
                 });
                 //console.log("Saving ", todos_);
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(todos_));
@@ -86,6 +86,15 @@ define(['knockout',
                 todo.completed(this.allDone());
             });
             this.todos.valueHasMutated();
+
+            // Ensure click bubbles up for the check box click to work.
+            return true;
+        };
+
+        this.itemCompleted = () => {
+            // We need to notify todos has changed so it can be saved into localStorage
+            this.todos.valueHasMutated();
+
             // Ensure click bubbles up for the check box click to work.
             return true;
         };

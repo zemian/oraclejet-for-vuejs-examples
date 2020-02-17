@@ -16,7 +16,7 @@
                         :key="todo.data.id"
                         :class="[[{ completed: todo.data.completed, editing: todo.data == editedTodo() }]]">
                         <div class="view">
-                            <input class="toggle" type="checkbox" data-bind="checked: todo.data.completed">
+                            <input class="toggle" type="checkbox" data-bind="checked: todo.data.completed, click: itemCompleted">
                             <label on-dblclick="[[()=> editTodo(todo.data);]]">
                                 <oj-bind-text value="[[todo.data.title]]"></oj-bind-text>
                             </label>

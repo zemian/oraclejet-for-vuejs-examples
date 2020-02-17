@@ -1,5 +1,6 @@
 define(['knockout',
-    'ojs/ojknockout'
+    'ojs/ojknockout',
+    'director'
     ], function(ko) {
 
     function ExampleViewModel() {
@@ -133,6 +134,22 @@ define(['knockout',
         this.removeCompleted = () => {
             this.todos(self.filters.active(this.todos()));
         };
+
+        this.connected = () => {
+            // handle routing - using director library
+            function onHashChange () {
+                var visibility = window.location.hash.replace(/#\/?/, '');
+                if (self.filters[visibility]) {
+                    self.visibility(visibility);
+                } else {
+                    window.location.hash = '';
+                    self.visibility('all');
+                }
+            }
+
+            window.addEventListener('hashchange', onHashChange);
+            onHashChange();
+        }
     }
 
     return new ExampleViewModel();

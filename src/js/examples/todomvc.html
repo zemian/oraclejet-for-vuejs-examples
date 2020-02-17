@@ -8,7 +8,7 @@
                data-bind="textInput: newTodo, event: {keypress: addTodo}">
     </header>
     <section class="main" data-bind="visible: todos().length">
-        <input class="toggle-all" type="checkbox" data-bind="checkbox: allDone">
+        <input class="toggle-all" type="checkbox" data-bind="checked: allDone, click: allDoneClicked">
         <ul class="todo-list">
             <oj-bind-for-each data="[[filteredTodos]]" as="todo">
                 <template>

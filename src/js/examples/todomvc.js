@@ -40,14 +40,24 @@ define(['knockout',
 
         // ViewModel implementation
         this.todos = ko.observableArray(this.todoStorage.fetch());
+        this.visibility = ko.observable('all');
+        this.newTodo = ko.observable();
+        this.beforeEditCache = null;
+        this.editedTodo = ko.observable();
+        this.allDone = ko.observable(false);
+
         this.remaining = ko.computed(function(){
             return this.filters.active(this.todos()).length;
         }, this);
-        this.visibility = ko.observable('all');
-        this.newTodo = ko.observable();
-        this.allDone = ko.observable(false);
-        this.beforeEditCache = null;
-        this.editedTodo = ko.observable();
+
+        this.allDoneClicked = () => {
+            this.todos().forEach((todo) => {
+                todo.completed(this.allDone());
+            });
+            this.todos.valueHasMutated();
+            // Ensure click bubbles up for the check box click to work.
+            return true;
+        };
 
         this.pluralize =(n) => {
             return n === 1 ? 'item' : 'items';

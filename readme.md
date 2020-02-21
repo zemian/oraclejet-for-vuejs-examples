@@ -21,13 +21,14 @@ to find out more.
   All ideas and behaviors are from original VueJS and not from me. I have only done
   enough work to convert the demo from one framework to another.
 - This project solely used for learning purpose. Use it at your own risk.
-- Though I am a Oracle employee, I do not work directly
-  on the OracleJET development team. All the notes on re-implementations and comparision
-  are based on my own opinion. It does not reflect nor represent my employer in any way. 
+- Though I am an Oracle employee, but I do not work directly
+  on the OracleJET development team. All the notes here on re-implementations and comparision
+  of the two libraries are my own opinions. It does not reflect nor represent my employer 
+  in any way. 
 - The original VueJS examples are from their source repository and credits below to their 
   original authors.
-  (there is a copy in `vuejs-examples` directory for convenience)
-- Oracle JET library itself is an open source library.
+- Oracle JET library itself is an open source library. And all credits and license
+  can be found on their websites.
 
 ## How to Get Started On Development
 
@@ -72,5 +73,5 @@ Re-implementation List:
 - [ ] Wrapper Component
 - [ ] Realtime with deepstreamHub
 - [ ] Firebase + Validation
-- [ ] TodoMVC
+- [x] TodoMVC
 - [ ] HackerNews Clone

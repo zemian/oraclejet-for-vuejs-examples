@@ -2,7 +2,8 @@
 require.config({
     paths: {
         'marked': 'https://unpkg.com/marked@0.3.6/lib/marked',
-        'loadash': 'https://unpkg.com/lodash@4.16.0/lodash'
+        'loadash': 'https://unpkg.com/lodash@4.16.0/lodash',
+        'director': 'https://unpkg.com/director@1.2.8/build/director'
     }
 });
 

@@ -7,8 +7,13 @@
 /**
  * RequireJS config for OJET
  */
-requirejs.config(
-    {
+(function () {
+    function _ojIsIE11() {
+        var nAgt = navigator.userAgent;
+        return nAgt.indexOf('MSIE') !== -1 || !!nAgt.match(/Trident.*rv:11./);
+    };
+    var _ojNeedsES5 = _ojIsIE11();
+    requirejs.config({
         baseUrl: 'js',
 
         // Path mappings for the logical module names
@@ -19,19 +24,20 @@ requirejs.config(
                 'knockout': 'libs/knockout/knockout-3.5.0.debug',
                 'jquery': 'libs/jquery/jquery-3.4.1',
                 'jqueryui-amd': 'libs/jquery/jqueryui-amd-1.12.1',
-                'promise': 'libs/es6-promise/es6-promise',
                 'hammerjs': 'libs/hammer/hammer-2.0.8',
-                'ojdnd': 'libs/dnd-polyfill/dnd-polyfill-1.0.0',
-                'ojs': 'libs/oj/v7.2.0/debug',
-                'ojL10n': 'libs/oj/v7.2.0/ojL10n',
-                'ojtranslations': 'libs/oj/v7.2.0/resources',
+                'ojdnd': 'libs/dnd-polyfill/dnd-polyfill-1.0.1',
+                'ojs': 'libs/oj/v8.0.0/debug' + (_ojNeedsES5 ? '_es5' : ''),
+                'ojL10n': 'libs/oj/v8.0.0/ojL10n',
+                'ojtranslations': 'libs/oj/v8.0.0/resources',
                 'text': 'libs/require/text',
                 'signals': 'libs/js-signals/signals',
                 'customElements': 'libs/webcomponents/custom-elements.min',
                 'proj4': 'libs/proj4js/dist/proj4-src',
                 'css': 'libs/require-css/css',
-                'touchr': 'libs/touchr/touchr'
+                'touchr': 'libs/touchr/touchr',
+                'corejs': 'libs/corejs/shim',
+                'regenerator-runtime': 'libs/regenerator-runtime/runtime'
             }
         //endinjector
-    }
-);
+    });
+}());

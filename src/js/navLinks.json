@@ -23,5 +23,9 @@
   "svg": {
     "label": "SVG Graph",
     "pageTitle": "SVG Graph Example"
+  },
+  "todomvc": {
+    "label": "TodoMVC",
+    "pageTitle": "TodoMVC Example"
   }
 }

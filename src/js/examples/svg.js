@@ -29,10 +29,11 @@ define(['knockout',
             this.newLabel = ko.observable('');
             this.statsJsonText = ko.computed(()=> {
                 let stat_ = this.stats().map(e => {
-                    e.value_ = e.value();
-                    return e;
+                    let e_ = Object.assign({}, e);
+                    e_.value = e.value();
+                    return e_;
                 });
-                return JSON.stringify(this.stats(), null, 2);
+                return JSON.stringify(stat_, null, 2);
             });
 
             this.valueToPoint = function(value, index, total) {

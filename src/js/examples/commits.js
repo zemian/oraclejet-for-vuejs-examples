@@ -1,7 +1,7 @@
-/*
-OJET can access external API very well as well. Here we match to the VueJS
-examples to fetch GitHub commits and using KO observable to toggle
-different branches as input parameter.
+/**
+ * OJET can access external API very well as well. Here we match to the VueJS
+ * examples to fetch GitHub commits and using KO observable to toggle
+ * different branches as input parameter.
  */
 define(['knockout',
         'ojs/ojknockout',

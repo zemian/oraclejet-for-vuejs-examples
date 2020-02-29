@@ -1,3 +1,6 @@
+/**
+ * This is just a home page to show the server time.
+ */
 define(['knockout'],
     function (ko) {
         function ExampleViewModel() {

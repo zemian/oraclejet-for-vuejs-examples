@@ -4,10 +4,10 @@
 
   "cdns": {
     "jet": {
-      "prefix": "https://static.oracle.com/cdn/jet/v7.2.0/default/js",
+      "prefix": "https://static.oracle.com/cdn/jet/v8.0.0/default/js",
       "config": "bundles-config.js"
     },
-    "3rdparty": "https://static.oracle.com/cdn/jet/v7.2.0/3rdparty"
+    "3rdparty": "https://static.oracle.com/cdn/jet/v8.0.0/3rdparty"
   },
 
   "libs": {
@@ -91,31 +91,14 @@
       "cdn": "3rdparty",
       "cwd": "node_modules/@oracle/oraclejet/dist/js/libs/dnd-polyfill",
       "debug": {
-        "src": "dnd-polyfill-1.0.0.js",
-        "path": "libs/dnd-polyfill/dnd-polyfill-1.0.0.js",
-        "cdnPath": "dnd-polyfill/dnd-polyfill-1.0.0"
+        "src": "dnd-polyfill-1.0.1.js",
+        "path": "libs/dnd-polyfill/dnd-polyfill-1.0.1.js",
+        "cdnPath": "dnd-polyfill/dnd-polyfill-1.0.1"
       },
       "release": {
-        "src": "dnd-polyfill-1.0.0.min.js",
-        "path": "libs/dnd-polyfill/dnd-polyfill-1.0.0.min.js",
-        "cdnPath": "dnd-polyfill/dnd-polyfill-1.0.0.min"
-      }
-    },
-
-    "persist": {
-      "cdn": "3rdparty",
-      "cwd": "node_modules/@oracle/oraclejet/dist/js/libs/persist",
-      "debug": {
-        "cwd": "debug",
-        "src": ["**"],
-        "path": "libs/persist/debug",
-        "cdnPath": "persist/debug"
-      },
-      "release": {
-        "cwd": "min",
-        "src": ["**"],
-        "path": "libs/persist/min",
-        "cdnPath": "persist/min"
+        "src": "dnd-polyfill-1.0.1.min.js",
+        "path": "libs/dnd-polyfill/dnd-polyfill-1.0.1.min.js",
+        "cdnPath": "dnd-polyfill/dnd-polyfill-1.0.1.min"
       }
     },
 
@@ -123,18 +106,24 @@
       "cdn": "jet",
       "cwd": "node_modules/@oracle/oraclejet/dist/js/libs/oj",
       "debug": {
-        "cwd": "debug", 
-        "src": ["**"],
-        "path": "libs/oj/v#{version}/debug",
+        "src": ["debug*/**"],
+        "path": "libs/oj/v#{version}",
+        "pathSuffix": "/debug' + (_ojNeedsES5 ? '_es5' : '')",
         "cdnPath": "debug"
       },
       "release": {
-        "cwd": "min", 
-        "src": ["**"],
-        "path": "libs/oj/v#{version}/min",
+        "src": ["min*/**"],
+        "path": "libs/oj/v#{version}",
+		"pathSuffix": "/min'",
         "cdnPath": "min"
+      },
+      "release_es5": {
+		"cwd": "min_es5",
+        "src": ["**"],
+        "path": "libs/oj/v#{version}/min_es5",
+        "cdnPath": "min_es5"
       }
-    },
+    },    
 
     "ojL10n": {
       "cdn": "jet",
@@ -163,6 +152,23 @@
         "src": ["**"],
         "path": "libs/oj/v#{version}/resources",
         "cdnPath": "resources"
+      }
+    },
+
+    "persist": {
+      "cdn": "3rdparty",
+      "cwd": "node_modules/@oracle/oraclejet/dist/js/libs/persist",
+      "debug": {
+        "cwd": "debug",
+        "src": ["**"],
+        "path": "libs/persist/debug",
+        "cdnPath": "persist/debug"
+      },
+      "release": {
+        "cwd": "min",
+        "src": ["**"],
+        "path": "libs/persist/min",
+        "cdnPath": "persist/min"
       }
     },
 
@@ -210,19 +216,19 @@
         "cdnPath": "touchr/touchr"
       }
     },
-    
+
     "regenerator-runtime": {
       "cdn": "3rdparty",
       "cwd": "node_modules/@oracle/oraclejet/dist/js/libs/regenerator-runtime",
       "debug": {
         "src":  "runtime.js",
-        "path": "libs/@tp:regenerator-runtime@.js",
-        "cdnPath": "@tp:regenerator-runtime@"
+        "path": "libs/regenerator-runtime/runtime.js",
+        "cdnPath": "regenerator-runtime/runtime"
       },
       "release": {
         "src": "runtime.js",
-        "path": "libs/@tp:regenerator-runtime@.js",
-        "cdnPath": "@tp:regenerator-runtime@"
+        "path": "libs/regenerator-runtime/runtime.js",
+        "cdnPath": "regenerator-runtime/runtime"
       }
     },
 
@@ -231,16 +237,16 @@
       "cwd": "node_modules/@oracle/oraclejet/dist/js/libs/corejs",
       "debug": {
         "src":  "shim.js",
-        "path": "libs/@tp:corejs:debug@.js",
-        "cdnPath": "@tp:corejs:debug@"
+        "path": "libs/corejs/shim.js",
+        "cdnPath": "corejs/shim"
       },
       "release": {
         "src": "shim.min.js",
-        "path": "libs/@tp:corejs@.js",
-        "cdnPath": "@tp:corejs@"
+        "path": "libs/corejs/shim.min.js",
+        "cdnPath": "corejs/shim.min"
       }
-    }, 
-
+    },    
+        
     "customElements": {
       "cdn": "3rdparty",
       "cwd": "node_modules/@webcomponents/custom-elements",
@@ -256,6 +262,21 @@
       }
     },
 
+    "proj4": {
+      "cdn": "3rdparty",
+      "cwd": "proj4/dist",
+      "debug": {
+        "src":  "proj4-src.js",
+        "path": "libs/proj4js/dist/proj4-src.js", 
+        "cdnPath": "proj4js/dist/proj4"
+      },
+      "release": {
+        "src": "proj4",
+        "path": "libs/proj4js/dist/proj4.js",
+        "cdnPath": "proj4js/dist/proj4"
+      }
+    },
+        
     "css": {
       "cdn": "3rdparty",
       "cwd": "node_modules/require-css",
@@ -270,5 +291,6 @@
         "cdnPath": "require-css/css.min"
       }
     }
+
   }
-} 
+}

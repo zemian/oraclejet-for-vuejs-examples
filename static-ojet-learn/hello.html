@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OJET Learn</title>
+
+    <!-- Ensure to update path prefix based on this html file location! -->
+    <link rel="stylesheet" href="../web/css/alta/8.0.0/web/alta.css" />
+    <script type="text/javascript" src="../web/js/libs/require/require.js"></script>
+    <script type="text/javascript" src="../web/js/main.js"></script>
+    <script>requirejs.config({ baseUrl: '../web/js' });</script>
+</head>
+<body style="margin: 10px;">
+
+    <div id="app">
+        Hello OJET! It's now <oj-bind-text value="[[time]]"></oj-bind-text>
+    </div>
+
+    <script>
+        require(['ojs/ojbootstrap', 'knockout', 'ojs/ojknockout'],
+            function (Bootstrap, ko) {
+                function AppViewModel() {
+                    this.time = ko.observable(new Date());
+
+                    let updateTime = () => {
+                        this.time(new Date());
+                        setTimeout(updateTime, 1000);
+                    };
+                    updateTime();
+                }
+
+                Bootstrap.whenDocumentReady().then(() => {
+                    let app = new AppViewModel();
+                    ko.applyBindings(app, document.getElementById("app"))
+                });
+            }
+        );
+    </script>
+
+</body>
+</html>

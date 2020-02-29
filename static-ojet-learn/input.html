@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OJET Learn</title>
+
+    <!-- Ensure to update path prefix based on this html file location! -->
+    <link rel="stylesheet" href="../web/css/alta/8.0.0/web/alta.css" />
+    <script type="text/javascript" src="../web/js/libs/require/require.js"></script>
+    <script type="text/javascript" src="../web/js/main.js"></script>
+    <script>requirejs.config({ baseUrl: '../web/js' });</script>
+</head>
+<body style="margin: 10px;">
+
+    <div id="app">
+        <div>
+            Name: <oj-input-text value="{{name}}"></oj-input-text>
+        </div>
+        <div>
+            <oj-button on-oj-action="[[submit]]">Submit</oj-button>
+        </div>
+        <div>
+            <pre><oj-bind-text value="[[result]]"></oj-bind-text></pre>
+        </div>
+    </div>
+
+    <script>
+        require(['ojs/ojbootstrap', 'knockout',
+                'ojs/ojknockout', 'ojs/ojinputtext', 'ojs/ojbutton'],
+            function (Bootstrap, ko) {
+                function AppViewModel() {
+                    this.name = ko.observable();
+                    this.result = ko.observable();
+
+                    this.submit = () => {
+                        console.log("name: ", this.name());
+                        this.result("You have submitted " + this.name());
+                    };
+                }
+
+                Bootstrap.whenDocumentReady().then(() => {
+                    let app = new AppViewModel();
+                    ko.applyBindings(app, document.getElementById("app"))
+                });
+            }
+        );
+    </script>
+
+</body>
+</html>

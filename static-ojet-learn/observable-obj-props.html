@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OJET Learn</title>
+
+    <!-- Ensure to update path prefix based on this html file location! -->
+    <link rel="stylesheet" href="../web/css/alta/8.0.0/web/alta.css" />
+    <script type="text/javascript" src="../web/js/libs/require/require.js"></script>
+    <script type="text/javascript" src="../web/js/main.js"></script>
+    <script>requirejs.config({
+        baseUrl: '../web/js',
+        paths: {
+            "koMapping": "https://unpkg.com/knockout-mapping@2.6.0/dist/knockout.mapping"
+        }
+    });
+    </script>
+</head>
+<body style="margin: 10px;">
+
+    <div id="app">
+        <ul>
+            <li data-bind="text: employee().firstName"></li>
+            <li data-bind="text: employee().lastName"></li>
+            <li data-bind="text: employee().phone"></li>
+        </ul>
+    </div>
+
+    <script>
+        requirejs.config({
+            paths: {}
+        });
+        /**
+         * Try in Console:
+         *
+         * // Update object property is not okay
+         * app.employee().firstName = "Mark";
+         *
+         * // You will need to make the property itself to be observable to
+         * // make that work. There is a "ko.mapping" plugin that can help:
+         * // https://knockoutjs.com/documentation/plugins-mapping.html
+         *
+         * // Now you can do this:
+         * app.employee().firstName("Mark");
+         *
+         * // Update entire object is okay, be careful to use koMapping if you want
+         * // properties to be observable again, else you will lose the functionality
+         * // and no error will display!
+         *
+         * // Dangerous!
+         * e = new Employee();
+         * e.firstName = "John";
+         * app.employee(e);
+         *
+         * // Proper way!
+         * e = koMapping.fromJS(new Employee());
+         * e.firstName("John");
+         * app.employee(e);
+         *
+         */
+        require(['ojs/ojbootstrap', 'knockout', "koMapping",
+                'ojs/ojknockout', 'ojs/ojinputtext', 'ojs/ojbutton'],
+            function (Bootstrap, ko, koMapping) {
+                function Employee() {
+                    this.firstName = "Zemian";
+                    this.lastName = "Deng";
+                    this.phone = 1234567890;
+                }
+                function AppViewModel() {
+                    let employee = new Employee();
+                    employee = koMapping.fromJS(employee);
+                    this.employee = ko.observable(employee);
+                    this.list = ko.observableArray(['one', 'two']);
+                }
+
+                Bootstrap.whenDocumentReady().then(() => {
+                    let app = new AppViewModel();
+                    window.app = app;
+                    window.koMapping = koMapping;
+                    window.Employee = Employee;
+                    ko.applyBindings(app, document.getElementById("app"))
+                });
+            }
+        );
+    </script>
+
+</body>
+</html>

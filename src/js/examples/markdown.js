@@ -1,15 +1,15 @@
-/*
-OJET can bind to UI with JS model using KnockoutJS binding. What OJET provide
-on top is a very nice set of UI widget sets.
-
-OJET also use RequireJS to load up third party libraries. Matching to VueJS
-example, we will load a Markdown and the LoDash libraries (added in main.js
-under 'require.config')
-
-NOTE that OJET comes with its own styling and theme as well. Hence
-the textarea input is not able to pick up the VueJS example styling. But
-functionality it's working fine. To have a exact looks matching, we need
-to play with OJET flex/grid container to maximize the textarea input.
+/**
+ * OJET can bind to UI with JS model using KnockoutJS binding. What OJET provide
+ * on top is a very nice set of UI widget sets.
+ *
+ * OJET also use RequireJS to load up third party libraries. Matching to VueJS
+ * example, we will load a Markdown and the LoDash libraries (added in main.js
+ * under 'require.config')
+ *
+ * NOTE that OJET comes with its own styling and theme as well. Hence
+ * the textarea input is not able to pick up the VueJS example styling. But
+ * functionality it's working fine. To have a exact looks matching, we need
+ * to play with OJET flex/grid container to maximize the textarea input.
  */
 define(['knockout',
         'marked',

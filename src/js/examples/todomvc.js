@@ -1,17 +1,17 @@
-/*
-Made this popular TodoMVC app to work with OJET. The CSS is actually need
-to rework by combining todomvc/index.css version 2.3.0 and 2.0.4 to get it
-to work properly.
-
-Note also that VueJS has nice key binding that we need to manually detect
-ENTER and ESC to process them here.
-
-The storage types for todos item are as follow:
-    id: number
-    title: ko.observable<string>()
-    completed: ko.observable<boolean>()
-Note that we need to convert observable into native types before saving into
-localStorage and convert it back.
+/**
+ * Made this popular TodoMVC app to work with OJET. The CSS is actually need
+ * to rework by combining todomvc/index.css version 2.3.0 and 2.0.4 to get it
+ * to work properly.
+ *
+ * Note also that VueJS has nice key binding that we need to manually detect
+ * ENTER and ESC to process them here.
+ *
+ * The storage types for todos item are as follow:
+ *     id: number
+ *     title: ko.observable<string>()
+ *     completed: ko.observable<boolean>()
+ * Note that we need to convert observable into native types before saving into
+ * localStorage and convert it back.
  */
 define(['knockout',
     'ojs/ojknockout',

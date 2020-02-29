@@ -1,0 +1,13 @@
+<!-- demo root element -->
+<div id="demo-grid-oj-table">
+    <form id="search">
+        Search <oj-input-text raw-value="{{searchQuery}}" raw-value="[[searchQuery]]" on-raw-value-changed="[[filter]]"></oj-input-text>
+    </form>
+    <oj-table
+            data="[[gridDataProvider]]"
+            columns='[
+                {"headerText": "Name", "field": "name"},
+                {"headerText": "Power", "field": "power"}
+            ]'>
+    </oj-table>
+</div>

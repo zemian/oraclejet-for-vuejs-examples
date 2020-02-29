@@ -1,0 +1,12 @@
+css-override-comp3:not(.oj-complete){
+  visibility: hidden;
+}
+
+css-override-comp3{
+	min-height: 50px;
+	width: 50px;
+}
+
+css-override-comp3 .my-css {
+	color: blue;
+}

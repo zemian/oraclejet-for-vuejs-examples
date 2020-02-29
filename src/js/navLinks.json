@@ -16,6 +16,10 @@
     "label": "Grid Component",
     "pageTitle": "Grid Component Example"
   },
+  "grid-oj-table": {
+    "label": "Grid Component ojTable",
+    "pageTitle": "Grid Component Example Using ojTable"
+  },
   "tree": {
     "label": "Tree View",
     "pageTitle": "Tree View Example"

@@ -1,16 +1,16 @@
-#demo {
+#demo-grid-container {
     font-family: Helvetica Neue, Arial, sans-serif;
     font-size: 14px;
     color: #444;
 }
 
-#demo table {
+demo-grid table {
     border: 2px solid #42b983;
     border-radius: 3px;
     background-color: #fff;
 }
 
-#demo th {
+demo-grid th {
     background-color: #42b983;
     color: rgba(255,255,255,0.66);
     cursor: pointer;
@@ -20,24 +20,24 @@
     user-select: none;
 }
 
-#demo td {
+demo-grid td {
     background-color: #f9f9f9;
 }
 
-#demo th, td {
+demo-grid th, demo-grid td {
     min-width: 120px;
     padding: 10px 20px;
 }
 
-#demo th.active {
+demo-grid th.active {
     color: #fff;
 }
 
-#demo th.active .arrow {
+demo-grid th.active .arrow {
     opacity: 1;
 }
 
-#demo .arrow {
+demo-grid .arrow {
     display: inline-block;
     vertical-align: middle;
     width: 0;
@@ -46,13 +46,13 @@
     opacity: 0.66;
 }
 
-#demo .arrow.asc {
+demo-grid .arrow.asc {
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     border-bottom: 4px solid #fff;
 }
 
-#demo .arrow.dsc {
+demo-grid .arrow.dsc {
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     border-top: 4px solid #fff;

@@ -1,4 +1,4 @@
-button {
+#demo-todomvc button {
     margin: 0;
     padding: 0;
     border: 0;
@@ -27,11 +27,11 @@ button {
     font-weight: 300;
 }
 
-:focus {
+#demo-todomvc :focus {
     outline: 0;
 }
 
-.hidden {
+#demo-todomvc .hidden {
     display: none;
 }
 

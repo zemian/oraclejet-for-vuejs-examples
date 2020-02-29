@@ -1,0 +1,12 @@
+css-override-comp:not(.oj-complete){
+  visibility: hidden;
+}
+
+css-override-comp{
+	min-height: 50px;
+	width: 50px;
+}
+
+.my-css {
+	color: red;
+}

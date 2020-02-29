@@ -1,14 +1,14 @@
-#demo {
+#demo-tree {
     font-family: Menlo, Consolas, monospace;
     color: #444;
 }
-#demo .item {
+#demo-tree .item {
     cursor: pointer;
 }
-#demo .bold {
+#demo-tree .bold {
     font-weight: bold;
 }
-#demo ul {
+#demo-tree ul {
     padding-left: 1em;
     line-height: 1.5em;
     list-style-type: dot;

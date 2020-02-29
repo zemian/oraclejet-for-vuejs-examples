@@ -31,18 +31,5 @@
   "todomvc": {
     "label": "TodoMVC",
     "pageTitle": "TodoMVC Example"
-  },
-
-  "css-override": {
-    "label": "css-override",
-    "pageTitle": "css-override"
-  },
-  "css-override2": {
-    "label": "css-override2",
-    "pageTitle": "css-override2"
-  },
-  "css-override3": {
-    "label": "css-override3",
-    "pageTitle": "css-override3"
   }
 }

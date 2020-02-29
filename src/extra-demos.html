@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>Oracle JET Examples</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1">
+  <link rel="icon" href="css/images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/css/alta/8.0.0/web/alta.css" id="css" />
+  <link rel="stylesheet" href="/css/app.css" type="text/css"/>
+</head>
+<body>
+<div id="app">
+    <p>We can use this page to load extra demos that are not in the navigation list.
+        Simply type in the name of the view below and switch to it.</p>
+    <div id="header">
+        <oj-input-text value="{{demoName}}"></oj-input-text>
+        <oj-button on-oj-action="[[viewDemo]]">View</oj-button>
+    </div>
+    <div id="page-body">
+        <div id="nav">
+        </div>
+        <div id="content">
+            <oj-module id="content-module" config="[[moduleConfig]]"></oj-module>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/js/libs/require/require.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+<script>
+
+    require([
+            'ojs/ojbootstrap',
+            'knockout',
+            'ojs/ojmodule-element-utils',
+            'ojs/ojknockout',
+            'ojs/ojmodule-element',
+            'ojs/ojinputtext',
+            'ojs/ojbutton'],
+        function (Bootstrap, ko, ModuleUtils) {
+            Bootstrap.whenDocumentReady().then(function () {
+                function AppViewModel() {
+                    this.demoName = ko.observable("home");
+
+                    // === Setup default module router
+                    this.moduleConfig = ko.observable({"view": [], "viewModel": null});
+                    this.loadModuleConfig = function (name) {
+                        let modName = "examples";
+                        let viewPath = `${modName}/${name}.html`;
+                        let modelPath = `${modName}/${name}`;
+                        let cssPromise = new Promise(function (resolve, reject) {
+                            require([`css!${modName}/${name}.css`], resolve, reject);
+                        });
+                        let masterPromise = Promise.all([
+                            ModuleUtils.createView({"viewPath": viewPath}),
+                            ModuleUtils.createViewModel({"viewModelPath": modelPath}),
+                            cssPromise
+                        ]);
+                        masterPromise.then((values) => {
+                            this.moduleConfig({"view": values[0], "viewModel": values[1]});
+                        });
+                    };
+                    this.loadModuleConfig(this.demoName());
+
+                    this.viewDemo = () => {
+                      console.log("Loading " + this.demoName());
+                      this.loadModuleConfig(this.demoName());
+                    }
+                }
+
+                let app = new AppViewModel();
+                ko.applyBindings(app, document.getElementById('app'));
+            });
+        }
+    );
+</script>
+</body>
+</html>

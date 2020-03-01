@@ -17,7 +17,7 @@ to find out more.
 
 - This `oraclejet-for-vuejs-examples` project is written by Zemian Deng.
   I have merely ported the code from VueJS to OracleJET. All the looks, styling, 
-  behaviors and functionality are from modified version of original VueJS examples code.
+  behaviors and functionalities are from modified version of original VueJS examples code.
   All ideas and behaviors are from original VueJS and not from me. I have only done
   enough work to convert the demo from one framework to another.
 - This project solely used for learning purpose. Use it at your own risk.
@@ -39,21 +39,21 @@ get started in a terminal like this:
 cd oraclejet-for-vuejs-examples
 npm install
 npx ojet serve
-# open http://localhost:8080
+# open http://localhost:8000
 ```
 
 In each example, there are some developer notes and tips in
-comparing the two framework usage. To see more details, open each
-file under `src/js/examples` folder.
+comparing the two frameworks usage. To see more details, open the
+`.js` file under `src/js/examples` folder.
 
 ## Fixing Example CSS files
 
 The original example css files assume each example is in it's own html page
-and style some elements globally. This affected some of OJET own theme styling
+and styled some elements globally. This affected some of OJET own theme styling
 when we try to load all examples as single page application. So a fix is added 
-some example css to prefix some elements with #demo container selector. This 
-prevents style overrides problem. Other than this, the example should look
-and behave the same as original work.
+with a unique demo name prefix some elements. This prevents style overrides 
+between examples. Other than this, the example should look and behave the 
+same as original work.
 
 ## Examples List
 
@@ -69,7 +69,7 @@ Re-implementation List:
 - [x] Tree View
 - [x] SVG Graph
 - [ ] Modal Component
-- [ ] Elastic Header
+- [x] Elastic Header
 - [ ] Wrapper Component
 - [ ] Realtime with deepstreamHub
 - [ ] Firebase + Validation

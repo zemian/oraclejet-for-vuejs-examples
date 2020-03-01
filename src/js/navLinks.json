@@ -31,5 +31,9 @@
   "todomvc": {
     "label": "TodoMVC",
     "pageTitle": "TodoMVC Example"
+  },
+  "elastic-header": {
+    "label": "Elastic Header",
+    "pageTitle": "Elastic Header Example"
   }
 }

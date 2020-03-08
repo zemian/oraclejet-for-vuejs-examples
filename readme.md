@@ -42,9 +42,20 @@ npx ojet serve
 # open http://localhost:8000
 ```
 
-In each example, there are some developer notes and tips in
-comparing the two frameworks usage. To see more details, open the
-`.js` file under `src/js/examples` folder.
+## Notes on Comparing the Libraries
+
+The Oracle JET library uses KnockoutJS as it's model binding, and it has large set of
+UI components (including charts and graphs). So comparing it to VueJS itself is not 
+strictly equal, since VueJS is more at lower level. A VueJS based UI library 
+such as Vuetify would be more equal level to compare with OJET. But the VueJS 
+distribution comes with some examples that has some very interesting problems that
+will demonstrate how a developer will use a library to implement it. So despite the 
+exmaples are without heavy UI part, it can clearly shows you how the model is constructed
+and the DOM view is rendered. We can compare these specific area when inspecting the 
+example code.
+
+There are some additional comparison notes inside each example as well. See each of `.js` 
+file comments under `src/js/examples` directory for more details.
 
 ## Fixing Example CSS files
 
@@ -58,7 +69,7 @@ same as original work.
 ## Examples List
 
 A copy of the original VueJS (v2) Examples is under `vuejs-examples` 
-directory. These examples should able to run by opening the `index.html` 
+directory for referenc purpose. These examples should able to run by opening the `index.html` 
 in a browser without running a web server. 
 
 Re-implementation List:

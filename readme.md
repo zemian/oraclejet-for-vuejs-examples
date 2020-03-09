@@ -44,10 +44,10 @@ UI components (including charts and graphs). So comparing it to VueJS itself is 
 strictly fair, since VueJS is at a lower level. A VueJS based UI library 
 such as [Vuetify](https://vuetifyjs.com/) would be more similar to OJET. However the original 
 VueJS distribution comes with some very interesting demos, therefore I wanted to convert them
-using OJET.
+using OJET and see how things compared in implementation details.
 
-There are some additional comparison notes inside each `.js` file as comments for the example, which can
-be found under the `src/js/examples` directory.
+There are some additional comparison notes inside each `.js` file as comments for the example, 
+which can be found under the `src/js/examples` directory.
 
 ## Fixing Example CSS files
 

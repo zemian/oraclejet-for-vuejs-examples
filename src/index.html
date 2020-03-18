@@ -18,13 +18,13 @@
   <body>
     <div id="app">
       <div id="header">
-        <h1><oj-bind-text value="[[pageTitle]]"></oj-bind-text></h1>
+<!--        <h1>Oracle JET Examples</h1>-->
       </div>
       <div id="page-body">
         <div id="nav">
           <oj-navigation-list
                         data="[[navLinksDP]]"
-                        selection="[[defaultNavLinkId]]"
+                        selection="[[currentNavLink().id]]"
                         on-selection-changed="[[onNavLinkChanged]]">
             <template slot="itemTemplate">
               <li><a class="oj-link" href="#"><oj-bind-text value="[[$current.data.label]]"></oj-bind-text></a></li>
@@ -32,6 +32,8 @@
           </oj-navigation-list>
         </div>
         <div id="content">
+          <h1><oj-bind-text value="[[currentNavLink().pageTitle]]"></oj-bind-text></h1>
+          <p><oj-bind-text value="[[currentNavLink().description]]"></oj-bind-text></p>
           <oj-module id="content-module" config="[[moduleConfig]]"></oj-module>
         </div>
       </div>

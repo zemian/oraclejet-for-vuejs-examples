@@ -2,47 +2,56 @@
   {
     "id": "home",
     "label": "Home",
-    "pageTitle": "OracleJET Examples",
+    "pageTitle": "Oracle JET Examples",
+    "description": "",
     "isDefault": true
   },
   {
     "id": "markdown",
     "label": "Markdown Editor",
-    "pageTitle": "Markdown Editor Example"
+    "pageTitle": "Markdown Editor Example",
+    "description": "Dead simple Markdown editor."
   },
   {
     "id": "commits",
     "label": "Github Commits",
-    "pageTitle": "GitHub Commits Example"
+    "pageTitle": "GitHub Commits Example",
+    "description": "This example fetches latest Vue.js commits data from GitHub’s API and displays them as a list. You can switch between the master and dev branches."
   },
   {
     "id": "grid",
     "label": "Grid Component",
-    "pageTitle": "Grid Component Example"
+    "pageTitle": "Grid Component Example",
+    "description": "This is an example of creating a reusable grid component and using it with external data."
   },
   {
     "id": "grid-oj-table",
     "label": "Grid Component ojTable",
-    "pageTitle": "Grid Component Example Using ojTable"
+    "pageTitle": "Grid Component Example Using ojTable",
+    "description": "Like the GRID example, but use OJET UI oj-table component."
   },
   {
     "id": "tree",
     "label": "Tree View",
-    "pageTitle": "Tree View Example"
+    "pageTitle": "Tree View Example",
+    "description": "Example of a simple tree view implementation showcasing recursive usage of components."
   },
   {
     "id": "svg",
     "label": "SVG Graph",
-    "pageTitle": "SVG Graph Example"
+    "pageTitle": "SVG Graph Example",
+    "description": "This example showcases a combination of custom component, computed property, two-way binding and SVG support."
   },
   {
     "id": "todomvc",
     "label": "TodoMVC",
-    "pageTitle": "TodoMVC Example"
+    "pageTitle": "TodoMVC Example",
+    "description": ""
   },
   {
     "id": "elastic-header",
     "label": "Elastic Header",
-    "pageTitle": "Elastic Header Example"
+    "pageTitle": "Elastic Header Example",
+    "description": "Drag the bottom of the header outside and see it bounce back!"
   }
 ]

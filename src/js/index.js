@@ -12,8 +12,7 @@ require(['text!nav-links.json',
         function AppViewModel() {
             // == Data
             this.moduleConfig = ko.observable({"view": [], "viewModel": null});
-            this.pageTitle = ko.observable('OJET Example');
-            this.defaultNavLinkId = ko.observable('home');
+            this.currentNavLink = ko.observable();
             this.navLinks = null;
             this.navLinksDP = null;
 
@@ -21,14 +20,12 @@ require(['text!nav-links.json',
             this.onNavLinkChanged = function (event) {
                 //console.log("Changing menu nav", event);
                 let key = event.detail.value;
-                let navLink = this.navLinks.find(e => e.id === key);
-                this.loadModuleConfig(navLink);
+                this.currentNavLink(this.navLinks.find(e => e.id === key));
+                this.loadModuleConfig(this.currentNavLink());
             }.bind(this);
 
             // === Support Methods
             this.loadModuleConfig = function (navLink) {
-                this.pageTitle(navLink.pageTitle);
-
                 let name = navLink.id;
                 let path = "examples";
                 let viewPath = `${path}/${name}.html`;
@@ -42,18 +39,17 @@ require(['text!nav-links.json',
                     cssPromise
                 ]);
                 masterPromise.then((values) => {
+                    //console.log("Switching to module: " + viewPath);
                     this.moduleConfig({"view": values[0], "viewModel": values[1]});
                 });
             };
 
             this.init = function () {
-                // Load navLinks array object.
+                // Initialize model data
                 this.navLinks = JSON.parse(navLinksJsonText);
                 this.navLinksDP = new ArrayDataProvider(this.navLinks, {keyAttributes: "id"});
-
-                let navLink = this.navLinks.find(e => e.isDefault);
-                this.defaultNavLinkId(navLink.id);
-                this.loadModuleConfig(navLink);
+                this.currentNavLink(this.navLinks.find(e => e.isDefault));
+                this.loadModuleConfig(this.currentNavLink());
             };
 
             // Init ViewModel

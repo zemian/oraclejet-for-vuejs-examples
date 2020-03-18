@@ -22,16 +22,14 @@
       </div>
       <div id="page-body">
         <div id="nav">
-          <oj-list-view id="nav-menu-list"
+          <oj-navigation-list
                         data="[[navLinksDP]]"
-                        selected="[[selectedNavLink]]"
-                        selection-mode="single"
-                        selection-required="true"
-                        on-selected-changed="[[onNavLinkChanged]]">
+                        selection="[[defaultNavLinkId]]"
+                        on-selection-changed="[[onNavLinkChanged]]">
             <template slot="itemTemplate">
               <li><a class="oj-link" href="#"><oj-bind-text value="[[$current.data.label]]"></oj-bind-text></a></li>
             </template>
-          </oj-list-view>
+          </oj-navigation-list>
         </div>
         <div id="content">
           <oj-module id="content-module" config="[[moduleConfig]]"></oj-module>

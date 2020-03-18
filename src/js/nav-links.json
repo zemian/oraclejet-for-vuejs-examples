@@ -1,39 +1,48 @@
-{
-  "home": {
+[
+  {
+    "id": "home",
     "label": "Home",
     "pageTitle": "OracleJET Examples",
     "isDefault": true
   },
-  "markdown": {
+  {
+    "id": "markdown",
     "label": "Markdown Editor",
     "pageTitle": "Markdown Editor Example"
   },
-  "commits": {
+  {
+    "id": "commits",
     "label": "Github Commits",
     "pageTitle": "GitHub Commits Example"
   },
-  "grid": {
+  {
+    "id": "grid",
     "label": "Grid Component",
     "pageTitle": "Grid Component Example"
   },
-  "grid-oj-table": {
+  {
+    "id": "grid-oj-table",
     "label": "Grid Component ojTable",
     "pageTitle": "Grid Component Example Using ojTable"
   },
-  "tree": {
+  {
+    "id": "tree",
     "label": "Tree View",
     "pageTitle": "Tree View Example"
   },
-  "svg": {
+  {
+    "id": "svg",
     "label": "SVG Graph",
     "pageTitle": "SVG Graph Example"
   },
-  "todomvc": {
+  {
+    "id": "todomvc",
     "label": "TodoMVC",
     "pageTitle": "TodoMVC Example"
   },
-  "elastic-header": {
+  {
+    "id": "elastic-header",
     "label": "Elastic Header",
     "pageTitle": "Elastic Header Example"
   }
-}
+]

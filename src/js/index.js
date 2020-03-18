@@ -1,4 +1,4 @@
-require(['text!navLinks.json',
+require(['text!nav-links.json',
         'ojs/ojbootstrap',
         'knockout',
         'ojs/ojarraydataprovider',
@@ -6,24 +6,35 @@ require(['text!navLinks.json',
         'ojs/ojkeyset',
         'ojs/ojmodule-element',
         'ojs/ojknockout',
-        'ojs/ojlistview'],
+        'ojs/ojnavigationlist'],
     function (navLinksJsonText, Bootstrap, ko, ArrayDataProvider, ModuleUtils, KeySet) {
 
         function AppViewModel() {
-            // == Data for UI
+            // == Data
             this.moduleConfig = ko.observable({"view": [], "viewModel": null});
-            this.pageTitle = ko.observable();
-            this.selectedNavLink = ko.observable();
+            this.pageTitle = ko.observable('OJET Example');
+            this.defaultNavLinkId = ko.observable('home');
+            this.navLinks = null;
+            this.navLinksDP = null;
 
-            // == Service Data
-            this.navLinks = JSON.parse(navLinksJsonText);
+            // === Event Handlers
+            this.onNavLinkChanged = function (event) {
+                //console.log("Changing menu nav", event);
+                let key = event.detail.value;
+                let navLink = this.navLinks.find(e => e.id === key);
+                this.loadModuleConfig(navLink);
+            }.bind(this);
 
-            this.loadModuleConfig = function (name) {
-                let modName = "examples";
-                let viewPath = `${modName}/${name}.html`;
-                let modelPath = `${modName}/${name}`;
+            // === Support Methods
+            this.loadModuleConfig = function (navLink) {
+                this.pageTitle(navLink.pageTitle);
+
+                let name = navLink.id;
+                let path = "examples";
+                let viewPath = `${path}/${name}.html`;
+                let modelPath = `${path}/${name}`;
                 let cssPromise = new Promise(function (resolve, reject) {
-                    require([`css!${modName}/${name}.css`], resolve, reject);
+                    require([`css!${path}/${name}.css`], resolve, reject);
                 });
                 let masterPromise = Promise.all([
                     ModuleUtils.createView({"viewPath": viewPath}),
@@ -35,34 +46,14 @@ require(['text!navLinks.json',
                 });
             };
 
-            // === Setup Nav Links
-
-            // Build array from the object with key as the 'value' property
-            let navLinksArray = Object.entries(this.navLinks).map(([k, v]) => {
-                v.value = k;
-                return v;
-            });
-            this.navLinksDP = new ArrayDataProvider(navLinksArray, {keyAttributes: "value"});
-            this.onNavLinkChanged = function (event) {
-                //console.log("Changing menu nav", event);
-                // event.detail.value type=KeySetImpl
-                let keyArrays = Array.from(event.detail.value.values());
-                let key = keyArrays[0]; // since we handle single select, we care only first element
-                //console.log("Selected key", key);
-
-                this.pageTitle(this.navLinks[key].pageTitle);
-                this.loadModuleConfig(key);
-            }.bind(this);
-
-            // === Setup default navLink selection & load module
             this.init = function () {
-                let selectedLink = Object.values(this.navLinks).find(e => e.isDefault);
-                if (!selectedLink) {
-                    selectedLink = this.navLinks['home'];
-                }
-                this.selectedNavLink(new KeySet.KeySetImpl([selectedLink.value]));
-                this.pageTitle(selectedLink.pageTitle);
-                this.loadModuleConfig(selectedLink.value);
+                // Load navLinks array object.
+                this.navLinks = JSON.parse(navLinksJsonText);
+                this.navLinksDP = new ArrayDataProvider(this.navLinks, {keyAttributes: "id"});
+
+                let navLink = this.navLinks.find(e => e.isDefault);
+                this.defaultNavLinkId(navLink.id);
+                this.loadModuleConfig(navLink);
             };
 
             // Init ViewModel

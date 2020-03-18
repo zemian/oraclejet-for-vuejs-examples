@@ -41,3 +41,15 @@
         //endinjector
     });
 }());
+
+// Extra Dependencies
+// NOTE: Latest dynamics.js is only served from http, and causing issue
+//       in live DEMO, so we made a copy in 'src/js/lib' folder.
+require.config({
+    paths: {
+        'marked': 'https://unpkg.com/marked@0.3.6/lib/marked',
+        'loadash': 'https://unpkg.com/lodash@4.16.0/lodash',
+        'director': 'https://unpkg.com/director@1.2.8/build/director',
+        'dynamics': 'lib/dynamicjs/dynamics'
+    }
+});

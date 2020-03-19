@@ -28,7 +28,8 @@
     "id": "grid-oj-table",
     "label": "Grid Component - ojTable",
     "pageTitle": "Grid Component Example Using ojTable",
-    "description": "Like the 'grid' example, but use OJET UI oj-table component."
+    "description": "Like the 'grid' example, but use OJET UI oj-table component.",
+    "skipCss": true
   },
   {
     "id": "tree",
@@ -64,6 +65,7 @@
     "id": "modal-oj-dialog",
     "label": "Modal Component - ojDialog",
     "pageTitle": "Modal Component Example using ojDialog",
-    "description": "Like the 'modal' example, but use OJET UI oj-dialog component."
+    "description": "Like the 'modal' example, but use OJET UI oj-dialog component.",
+    "skipCss": true
   }
 ]

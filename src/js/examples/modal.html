@@ -1,7 +1,7 @@
 <div id="demo-modal">
     <button id="show-modal" on-click="[[onOpenModal]]">Show Modal</button>
     <oj-bind-if test="[[showModal]]">
-        <demo-modal>
+        <demo-modal id="demo-modal-component">
             <h3 slot="header">custom header</h3>
         </demo-modal>
     </oj-bind-if>

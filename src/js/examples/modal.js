@@ -1,9 +1,19 @@
-define(['knockout', 'ojs/ojcomposite', 'ojs/ojknockout'], function (ko, Composite) {
+define(['knockout',
+    'ojs/ojcomposite',
+    'ojs/ojanimation',
+    'ojs/ojknockout'
+], function (ko, Composite, AnimationUtils) {
     function DemoModalViewModel(context) {
         this.onCloseModal = (event) => {
             let closeEvent = new CustomEvent('demo-modal-close', {bubbles: true});
             context.element.dispatchEvent(closeEvent);
         };
+
+        this.connected = function (context) {
+            // We can "transition" or "animate" our modal appearance
+            let el = document.getElementsByClassName("modal-container")[0];
+            AnimationUtils.expand(el, {duration: "1s"});
+        }
     }
 
     function ExampleViewModal() {

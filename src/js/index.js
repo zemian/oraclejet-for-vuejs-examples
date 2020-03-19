@@ -21,7 +21,7 @@ require(['text!nav-links.json',
                 let name = event.detail.value;
                 let navLink = this.navLinks.find(e => e.id === name);
                 this.currentNavLink(navLink);
-                this.loadModuleConfig(navLink.name);
+                this.loadModuleConfig(navLink.id);
             }.bind(this);
 
             // === Support Methods

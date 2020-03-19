@@ -53,5 +53,11 @@
     "label": "Elastic Header",
     "pageTitle": "Elastic Header Example",
     "description": "Drag the bottom of the header downward and see it bounce!"
+  },
+  {
+    "id": "modal",
+    "label": "Modal Component",
+    "pageTitle": "Modal Component Example",
+    "description": "Features used: component, prop passing, content insertion, transitions."
   }
 ]

@@ -14,15 +14,17 @@
 define(['knockout',
         'marked',
         'loadash',
-        'ojs/ojknockout'],
-    function (ko, marked, _) {
+        'ojs/ojhtmlutils',
+        'ojs/ojknockout',
+        'ojs/ojbinddom'],
+    function (ko, marked, _, HtmlUtils) {
 
         function ExampleViewModel() {
             this.editorInput = ko.observable("# Hello");
             this.compiledMarkdown = ko.computed(function () {
                 let result = marked(this.editorInput(), {sanitize: true});
                 //console.log("Markdown:", result);
-                return result;
+                return {view: HtmlUtils.stringToNodeArray(result)};
             }, this);
 
             this.onEditorRawInputChanged = _.debounce(function (event, vm) {

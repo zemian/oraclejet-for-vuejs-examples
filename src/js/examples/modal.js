@@ -1,3 +1,10 @@
+/**
+ * The VueJS modal in this example is done by using custom css. We simply just
+ * need to implements the component to render the html elements.
+ *
+ * In this example, we use OJET "oj-bind-slot" instead of VueJS "slot" for content insertion.
+ * We also used the OJET AnimationUtils to apply modal effect instead of the VueJS transition.
+ */
 define(['knockout',
     'ojs/ojcomposite',
     'ojs/ojanimation',

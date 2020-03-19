@@ -46,12 +46,12 @@
     "id": "todomvc",
     "label": "TodoMVC",
     "pageTitle": "TodoMVC Example",
-    "description": ""
+    "description": "This is a fully spec-compliant TodoMVC implementation in under 120 effective lines of JavaScript (excluding comments and blank lines)."
   },
   {
     "id": "elastic-header",
     "label": "Elastic Header",
     "pageTitle": "Elastic Header Example",
-    "description": "Drag the bottom of the header outside and see it bounce back!"
+    "description": "Drag the bottom of the header downward and see it bounce!"
   }
 ]

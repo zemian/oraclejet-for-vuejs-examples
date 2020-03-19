@@ -4,6 +4,7 @@
  *
  * In this example, we use OJET "oj-bind-slot" instead of VueJS "slot" for content insertion.
  * We also used the OJET AnimationUtils to apply modal effect instead of the VueJS transition.
+ * We also used custom event to pass information (bubble up) from component to parent model.
  */
 define(['knockout',
     'ojs/ojcomposite',

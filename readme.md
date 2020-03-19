@@ -70,7 +70,7 @@ Re-implementation List:
 - [x] Grid Component
 - [x] Tree View
 - [x] SVG Graph
-- [ ] Modal Component
+- [x] Modal Component
 - [x] Elastic Header
 - [ ] Wrapper Component
 - [ ] Realtime with deepstreamHub

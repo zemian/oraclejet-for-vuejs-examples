@@ -3,11 +3,10 @@ require(['text!nav-links.json',
         'knockout',
         'ojs/ojarraydataprovider',
         'ojs/ojmodule-element-utils',
-        'ojs/ojkeyset',
         'ojs/ojmodule-element',
         'ojs/ojknockout',
         'ojs/ojnavigationlist'],
-    function (navLinksJsonText, Bootstrap, ko, ArrayDataProvider, ModuleUtils, KeySet) {
+    function (navLinksJsonText, Bootstrap, ko, ArrayDataProvider, ModuleUtils) {
 
         function AppViewModel() {
             // == Data
@@ -21,12 +20,11 @@ require(['text!nav-links.json',
                 //console.log("Changing menu nav", event);
                 let key = event.detail.value;
                 this.currentNavLink(this.navLinks.find(e => e.id === key));
-                this.loadModuleConfig(this.currentNavLink());
+                this.loadModuleConfig(key);
             }.bind(this);
 
             // === Support Methods
-            this.loadModuleConfig = function (navLink) {
-                let name = navLink.id;
+            this.loadModuleConfig = function (name) {
                 let path = "examples";
                 let viewPath = `${path}/${name}.html`;
                 let modelPath = `${path}/${name}`;
@@ -39,7 +37,7 @@ require(['text!nav-links.json',
                     cssPromise
                 ]);
                 masterPromise.then((values) => {
-                    //console.log("Switching to module: " + viewPath);
+                    console.log("Switching to module: " + viewPath);
                     this.moduleConfig({"view": values[0], "viewModel": values[1]});
                 });
             };
@@ -48,8 +46,18 @@ require(['text!nav-links.json',
                 // Initialize model data
                 this.navLinks = JSON.parse(navLinksJsonText);
                 this.navLinksDP = new ArrayDataProvider(this.navLinks, {keyAttributes: "id"});
-                this.currentNavLink(this.navLinks.find(e => e.isDefault));
-                this.loadModuleConfig(this.currentNavLink());
+
+                // Parse query string to see if navLink is give
+                let params = new URLSearchParams(window.location.search);
+                if (params.has("example")) {
+                    let name = params.get("example");
+                    this.currentNavLink({id: name, pageTitle: name});
+                    this.loadModuleConfig(name);
+                } else {
+                    let navLink = this.navLinks.find(e => e.isDefault);
+                    this.currentNavLink(navLink);
+                    this.loadModuleConfig(navLink.id);
+                }
             };
 
             // Init ViewModel

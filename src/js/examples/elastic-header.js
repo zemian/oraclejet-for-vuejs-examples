@@ -83,6 +83,7 @@ define(['knockout', 'dynamics'],
                 }
             };
         }
-        return new ExampleViewModel();
+
+        return ExampleViewModel;
     }
 );

@@ -49,6 +49,6 @@ define(['knockout',
             };
         }
 
-        return new ExampleViewModel();
+        return ExampleViewModel;
     }
 );

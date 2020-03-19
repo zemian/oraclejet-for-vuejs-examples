@@ -1,0 +1,17 @@
+<div id="demo-modal-oj-dialog">
+    <oj-button id="buttonOpener" on-click="[[onOpenModal]]">
+        Show Modal
+    </oj-button>
+    <oj-dialog style="display:none" id="demo-modal-oj-dialog-1">
+        <div slot="header">
+            <h3>Custom Header</h3>
+        </div>
+        <div slot="body">
+            <p>Modal Body</p>
+        </div>
+        <div slot="footer">
+            <oj-button on-click="[[onCloseModal]]">OK
+            </oj-button>
+        </div>
+    </oj-dialog>
+</div>

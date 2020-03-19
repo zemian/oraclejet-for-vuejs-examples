@@ -18,9 +18,10 @@ require(['text!nav-links.json',
             // === Event Handlers
             this.onNavLinkChanged = function (event) {
                 //console.log("Changing menu nav", event);
-                let key = event.detail.value;
-                this.currentNavLink(this.navLinks.find(e => e.id === key));
-                this.loadModuleConfig(key);
+                let name = event.detail.value;
+                let navLink = this.navLinks.find(e => e.id === name);
+                this.currentNavLink(navLink);
+                this.loadModuleConfig(navLink.name);
             }.bind(this);
 
             // === Support Methods
@@ -51,8 +52,12 @@ require(['text!nav-links.json',
                 let params = new URLSearchParams(window.location.search);
                 if (params.has("example")) {
                     let name = params.get("example");
-                    this.currentNavLink({id: name, pageTitle: name});
-                    this.loadModuleConfig(name);
+                    let navLink = this.navLinks.find(e => e.id === name);
+                    if (!navLink) {
+                        navLink = {id: name, pageTitle: name};
+                    }
+                    this.currentNavLink(navLink);
+                    this.loadModuleConfig(navLink.id);
                 } else {
                     let navLink = this.navLinks.find(e => e.isDefault);
                     this.currentNavLink(navLink);

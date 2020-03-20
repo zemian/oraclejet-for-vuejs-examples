@@ -8,20 +8,20 @@
     <title>OJET Learn</title>
 
     <!-- Ensure to update path prefix based on this html file location! -->
-    <link rel="stylesheet" href="../web/css/alta/8.0.0/web/alta.css" />
+    <link rel="stylesheet" href="../web/css/alta/8.1.0/web/alta.css" />
     <script type="text/javascript" src="../web/js/libs/require/require.js"></script>
     <script type="text/javascript" src="../web/js/main.js"></script>
     <script>requirejs.config({ baseUrl: '../web/js' });</script>
 </head>
-<body style="margin: 10px;">
+<body>
 
     <div id="app">
         Hello OJET! It's now <oj-bind-text value="[[time]]"></oj-bind-text>
     </div>
 
     <script>
-        require(['ojs/ojbootstrap', 'knockout', 'ojs/ojknockout'],
-            function (Bootstrap, ko) {
+        require(['knockout', 'ojs/ojbootstrap', 'ojs/ojknockout'],
+            function (ko, Bootstrap) {
                 function AppViewModel() {
                     this.time = ko.observable(new Date());
 

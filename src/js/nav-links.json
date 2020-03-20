@@ -1,0 +1,71 @@
+[
+  {
+    "id": "home",
+    "label": "Home",
+    "pageTitle": "Oracle JET Examples",
+    "description": "",
+    "isDefault": true
+  },
+  {
+    "id": "markdown",
+    "label": "Markdown Editor",
+    "pageTitle": "Markdown Editor Example",
+    "description": "Dead simple Markdown editor."
+  },
+  {
+    "id": "commits",
+    "label": "Github Commits",
+    "pageTitle": "GitHub Commits Example",
+    "description": "This example fetches latest Vue.js commits data from GitHub’s API and displays them as a list. You can switch between the master and dev branches."
+  },
+  {
+    "id": "grid",
+    "label": "Grid Component",
+    "pageTitle": "Grid Component Example",
+    "description": "This is an example of creating a reusable grid component and using it with external data."
+  },
+  {
+    "id": "grid-oj-table",
+    "label": "Grid Component - ojTable",
+    "pageTitle": "Grid Component Example Using ojTable",
+    "description": "Like the 'grid' example, but use OJET UI oj-table component.",
+    "skipCss": true
+  },
+  {
+    "id": "tree",
+    "label": "Tree View",
+    "pageTitle": "Tree View Example",
+    "description": "Example of a simple tree view implementation showcasing recursive usage of components."
+  },
+  {
+    "id": "svg",
+    "label": "SVG Graph",
+    "pageTitle": "SVG Graph Example",
+    "description": "This example showcases a combination of custom component, computed property, two-way binding and SVG support."
+  },
+  {
+    "id": "todomvc",
+    "label": "TodoMVC",
+    "pageTitle": "TodoMVC Example",
+    "description": "This is a fully spec-compliant TodoMVC implementation in under 120 effective lines of JavaScript (excluding comments and blank lines)."
+  },
+  {
+    "id": "elastic-header",
+    "label": "Elastic Header",
+    "pageTitle": "Elastic Header Example",
+    "description": "Drag the bottom of the header downward and see it bounce!"
+  },
+  {
+    "id": "modal",
+    "label": "Modal Component",
+    "pageTitle": "Modal Component Example",
+    "description": "Features used: component, prop passing, content insertion, transitions."
+  },
+  {
+    "id": "modal-oj-dialog",
+    "label": "Modal Component - ojDialog",
+    "pageTitle": "Modal Component Example using ojDialog",
+    "description": "Like the 'modal' example, but use OJET UI oj-dialog component.",
+    "skipCss": true
+  }
+]

@@ -18,3 +18,5 @@ Thumbs.db
 
 .idea/
 temp/
+/todo.txt
+/src/js/examples/test.*

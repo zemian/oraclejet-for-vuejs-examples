@@ -26,9 +26,9 @@
                 'jqueryui-amd': 'libs/jquery/jqueryui-amd-1.12.1',
                 'hammerjs': 'libs/hammer/hammer-2.0.8',
                 'ojdnd': 'libs/dnd-polyfill/dnd-polyfill-1.0.1',
-                'ojs': 'libs/oj/v8.0.0/debug' + (_ojNeedsES5 ? '_es5' : ''),
-                'ojL10n': 'libs/oj/v8.0.0/ojL10n',
-                'ojtranslations': 'libs/oj/v8.0.0/resources',
+                'ojs': 'libs/oj/v8.1.0/debug' + (_ojNeedsES5 ? '_es5' : ''),
+                'ojL10n': 'libs/oj/v8.1.0/ojL10n',
+                'ojtranslations': 'libs/oj/v8.1.0/resources',
                 'text': 'libs/require/text',
                 'signals': 'libs/js-signals/signals',
                 'customElements': 'libs/webcomponents/custom-elements.min',
@@ -41,3 +41,15 @@
         //endinjector
     });
 }());
+
+// Extra Dependencies
+// NOTE: Latest dynamics.js is only served from http, and causing issue
+//       in live DEMO, so we made a copy in 'src/js/lib' folder.
+require.config({
+    paths: {
+        'marked': 'https://unpkg.com/marked@0.3.6/lib/marked',
+        'loadash': 'https://unpkg.com/lodash@4.16.0/lodash',
+        'director': 'https://unpkg.com/director@1.2.8/build/director',
+        'dynamics': 'lib/dynamicjs/dynamics'
+    }
+});

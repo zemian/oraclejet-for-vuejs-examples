@@ -72,7 +72,7 @@ Re-implementation List:
 - [x] SVG Graph
 - [x] Modal Component
 - [x] Elastic Header
-- [ ] Wrapper Component
+- [x] Wrapper Component
 - [ ] Realtime with deepstreamHub
 - [ ] Firebase + Validation
 - [x] TodoMVC

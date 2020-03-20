@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OJET Learn</title>
+
+    <!-- Ensure to update path prefix based on this html file location! -->
+    <link rel="stylesheet" href="../web/css/alta/8.1.0/web/alta.css" />
+    <script type="text/javascript" src="../web/js/libs/require/require.js"></script>
+    <script type="text/javascript" src="../web/js/main.js"></script>
+    <script>requirejs.config({ baseUrl: '../web/js' });</script>
+</head>
+<body>
+
+    <!--
+    NOTE: This example will not work. Some how the component select with default slot will
+    not work when supply from the default slot.
+    -->
+    <template id="hello-component-template">
+        <select>
+            <oj-bind-slot>
+                <option>default</option>
+            </oj-bind-slot>
+        </select>
+    </template>
+
+    <div id="app">
+        <div>
+            <hello-component>
+                <option>test</option>
+                <option>test2</option>
+            </hello-component>
+        </div>
+    </div>
+
+    <script>
+        require(['knockout', 'ojs/ojbootstrap', 'ojs/ojcomposite', 'ojs/ojknockout'],
+            function (ko, Bootstrap, Composite) {
+                function HelloComponent() {
+                    this.message = "Hello";
+                }
+
+                function AppViewModel() {
+                }
+
+                Bootstrap.whenDocumentReady().then(() => {
+
+                    Composite.register("hello-component", {
+                        viewModel: HelloComponent,
+                        view: document.getElementById("hello-component-template").innerHTML,
+                        metadata: {}
+                    });
+
+                    let app = new AppViewModel();
+                    ko.applyBindings(app, document.getElementById("app"))
+                });
+            }
+        );
+    </script>
+
+</body>
+</html>

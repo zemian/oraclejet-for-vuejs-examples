@@ -67,5 +67,11 @@
     "pageTitle": "Modal Component Example using ojDialog",
     "description": "Like the 'modal' example, but use OJET UI oj-dialog component.",
     "skipCss": true
+  },
+  {
+    "id": "select2",
+    "label": "Wrapper Component",
+    "pageTitle": "Wrapper Component Example",
+    "description": "In this example we are integrating a 3rd party jQuery plugin (select2) by wrapping it inside a custom component."
   }
 ]

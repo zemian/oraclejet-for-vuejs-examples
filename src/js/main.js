@@ -50,6 +50,8 @@ require.config({
         'marked': 'https://unpkg.com/marked@0.3.6/lib/marked',
         'loadash': 'https://unpkg.com/lodash@4.16.0/lodash',
         'director': 'https://unpkg.com/director@1.2.8/build/director',
-        'dynamics': 'lib/dynamicjs/dynamics'
+        'dynamics': 'lib/dynamicjs/dynamics',
+        'select2': 'https://unpkg.com/select2@4.0.3/dist/js/select2',
+        'select2_css': 'https://unpkg.com/select2@4.0.3/dist/css/select2.min'
     }
 });

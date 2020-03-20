@@ -28,7 +28,7 @@ define([
             $(context.element).find("select")
                 .val(value)
                 // init select2
-                .select2({ data: options })
+                .select2({data: options})
                 .on('change', function (event) {
                     let newValue = $(this).children("option:selected").val();
                     context.properties.selected = newValue;
@@ -39,11 +39,11 @@ define([
     function ExampleViewModel() {
         this.selected = ko.observable(0);
         this.options = [
-            { id: 1, text: 'Hello' },
-            { id: 2, text: 'World' }
+            {id: 1, text: 'Hello'},
+            {id: 2, text: 'World'}
         ];
 
-        this.connected = function() {
+        this.connected = function () {
             //$('#states').select2();
 
             Composite.register("demo-select2", {
@@ -51,8 +51,8 @@ define([
                 view: document.getElementById("demo-select2-template").innerHTML,
                 metadata: {
                     properties: {
-                        options: { type: "array" },
-                        selected: { type: "number", writeback: true }
+                        options: {type: "array"},
+                        selected: {type: "number", writeback: true}
                     }
                 }
             });

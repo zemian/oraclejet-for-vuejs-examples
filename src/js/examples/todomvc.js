@@ -13,10 +13,7 @@
  * Note that we need to convert observable into native types before saving into
  * localStorage and convert it back.
  */
-define(['knockout',
-    'ojs/ojknockout',
-    'director'
-    ], function(ko) {
+define(['knockout', 'ojs/ojknockout', 'director'], function (ko) {
 
     function ExampleViewModel() {
         let self = this;
@@ -77,7 +74,7 @@ define(['knockout',
             self.todoStorage.save(newValue);
         });
 
-        this.remaining = ko.computed(function(){
+        this.remaining = ko.computed(function () {
             return this.filters.active(this.todos()).length;
         }, this);
 
@@ -99,11 +96,11 @@ define(['knockout',
             return true;
         };
 
-        this.pluralize =(n) => {
+        this.pluralize = (n) => {
             return n === 1 ? 'item' : 'items';
         };
 
-        this.filteredTodos = ko.computed(function() {
+        this.filteredTodos = ko.computed(function () {
             let result = self.filters[this.visibility()](this.todos());
             //console.log(result[0].title());
             return result;
@@ -178,7 +175,7 @@ define(['knockout',
 
         this.connected = () => {
             // handle routing - using director library
-            function onHashChange () {
+            function onHashChange() {
                 var visibility = window.location.hash.replace(/#\/?/, '');
                 if (self.filters[visibility]) {
                     self.visibility(visibility);

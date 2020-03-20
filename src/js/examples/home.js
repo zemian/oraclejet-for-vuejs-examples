@@ -1,19 +1,18 @@
 /**
  * This is just a home page to show the server time.
  */
-define(['knockout'],
-    function (ko) {
-        function ExampleViewModel() {
-            this.serverTime = ko.observable(new Date());
+define(['knockout'], function (ko) {
+    function ExampleViewModel() {
+        this.serverTime = ko.observable(new Date());
 
-            this.connected = () => {
-                let updateServerTime = () => {
-                    this.serverTime(new Date());
-                    setTimeout(updateServerTime, 1000);
-                };
-                updateServerTime();
+        this.connected = () => {
+            let updateServerTime = () => {
+                this.serverTime(new Date());
+                setTimeout(updateServerTime, 1000);
             };
-        }
-        return new ExampleViewModel();
+            updateServerTime();
+        };
     }
-);
+
+    return new ExampleViewModel();
+});

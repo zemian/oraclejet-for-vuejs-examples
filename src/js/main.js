@@ -11,7 +11,8 @@
     function _ojIsIE11() {
         var nAgt = navigator.userAgent;
         return nAgt.indexOf('MSIE') !== -1 || !!nAgt.match(/Trident.*rv:11./);
-    };
+    }
+
     var _ojNeedsES5 = _ojIsIE11();
     requirejs.config({
         baseUrl: 'js',

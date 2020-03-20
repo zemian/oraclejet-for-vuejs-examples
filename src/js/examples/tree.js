@@ -12,91 +12,90 @@
  * on-click and on-dblclick attributes used in html view.
  */
 define(['knockout',
-        'ojs/ojcomposite',
-        'ojs/ojknockout'],
-    function (ko, Composite) {
+    'ojs/ojcomposite',
+    'ojs/ojknockout'
+], function (ko, Composite) {
 
-        function TreeItemViewModel(context) {
-            this.model = context.properties.model;
-            this.open = ko.observable(false);
-            this.childrenObsArray = ko.observable();
+    function TreeItemViewModel(context) {
+        this.model = context.properties.model;
+        this.open = ko.observable(false);
+        this.childrenObsArray = ko.observable();
 
-            if (this.model.children) {
-                this.childrenObsArray(ko.observableArray(this.model.children));
+        if (this.model.children) {
+            this.childrenObsArray(ko.observableArray(this.model.children));
+        }
+
+        this.isFolder = ko.computed(function () {
+            let obsAry = this.childrenObsArray();
+            return obsAry && obsAry().length > 0;
+        }, this);
+
+        this.toggle = (event) => {
+            if (this.isFolder()) {
+                this.open(!this.open());
             }
+        };
 
-            this.isFolder = ko.computed(function(){
-                let obsAry = this.childrenObsArray();
-                return obsAry && obsAry().length > 0;
-            }, this);
+        this.changeType = (event) => {
+            if (!this.isFolder()) {
+                this.model.children = [];
+                this.childrenObsArray(ko.observableArray(this.model.children));
+                this.addChild();
+                this.open(true);
+            }
+        };
 
-            this.toggle = (event) => {
-                if (this.isFolder()) {
-                    this.open(!this.open());
-                }
-            };
-
-            this.changeType = (event) => {
-                if (!this.isFolder()) {
-                    this.model.children = [];
-                    this.childrenObsArray(ko.observableArray(this.model.children));
-                    this.addChild();
-                    this.open(true);
-                }
-            };
-
-            this.addChild = (event) => {
-                this.childrenObsArray().push({
-                    name: 'new stuff'
-                });
-            };
-        }
-
-        function ExampleViewModel() {
-            // demo data
-            var data = {
-                name: 'My Tree',
-                children: [
-                    {name: 'hello'},
-                    {name: 'wat'},
-                    {
-                        name: 'child folder',
-                        children: [
-                            {
-                                name: 'child folder',
-                                children: [
-                                    {name: 'hello'},
-                                    {name: 'wat'}
-                                ]
-                            },
-                            {name: 'hello'},
-                            {name: 'wat'},
-                            {
-                                name: 'child folder',
-                                children: [
-                                    {name: 'hello'},
-                                    {name: 'wat'}
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            };
-            this.treeData = data;
-
-            this.connected = () => {
-                Composite.register("tree-item", {
-                    viewModel: TreeItemViewModel,
-                    view: document.getElementById("tree-item-template").innerHTML,
-                    metadata: {
-                        properties: {
-                            model: { type: "object" }
-                        }
-                    }
-                });
-            };
-        }
-
-        return ExampleViewModel;
+        this.addChild = (event) => {
+            this.childrenObsArray().push({
+                name: 'new stuff'
+            });
+        };
     }
-);
+
+    function ExampleViewModel() {
+        // demo data
+        var data = {
+            name: 'My Tree',
+            children: [
+                {name: 'hello'},
+                {name: 'wat'},
+                {
+                    name: 'child folder',
+                    children: [
+                        {
+                            name: 'child folder',
+                            children: [
+                                {name: 'hello'},
+                                {name: 'wat'}
+                            ]
+                        },
+                        {name: 'hello'},
+                        {name: 'wat'},
+                        {
+                            name: 'child folder',
+                            children: [
+                                {name: 'hello'},
+                                {name: 'wat'}
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+        this.treeData = data;
+
+        this.connected = () => {
+            Composite.register("tree-item", {
+                viewModel: TreeItemViewModel,
+                view: document.getElementById("tree-item-template").innerHTML,
+                metadata: {
+                    properties: {
+                        model: {type: "object"}
+                    }
+                }
+            });
+        };
+    }
+
+    return ExampleViewModel;
+});

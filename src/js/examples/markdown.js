@@ -12,27 +12,26 @@
  * to play with OJET flex/grid container to maximize the textarea input.
  */
 define(['knockout',
-        'marked',
-        'loadash',
-        'ojs/ojhtmlutils',
-        'ojs/ojknockout',
-        'ojs/ojbinddom'],
-    function (ko, marked, _, HtmlUtils) {
+    'marked',
+    'loadash',
+    'ojs/ojhtmlutils',
+    'ojs/ojknockout',
+    'ojs/ojbinddom'
+], function (ko, marked, _, HtmlUtils) {
 
-        function ExampleViewModel() {
-            this.editorInput = ko.observable("# Hello");
-            this.compiledMarkdown = ko.computed(function () {
-                let result = marked(this.editorInput(), {sanitize: true});
-                //console.log("Markdown:", result);
-                return {view: HtmlUtils.stringToNodeArray(result)};
-            }, this);
+    function ExampleViewModel() {
+        this.editorInput = ko.observable("# Hello");
+        this.compiledMarkdown = ko.computed(function () {
+            let result = marked(this.editorInput(), {sanitize: true});
+            //console.log("Markdown:", result);
+            return {view: HtmlUtils.stringToNodeArray(result)};
+        }, this);
 
-            this.onEditorRawInputChanged = _.debounce(function (event, vm) {
-                //console.log("onEditorInputChanged", event, vm);
-                vm.editorInput(event.detail.value);
-            }, 300);
-        }
-
-        return ExampleViewModel;
+        this.onEditorRawInputChanged = _.debounce(function (event, vm) {
+            //console.log("onEditorInputChanged", event, vm);
+            vm.editorInput(event.detail.value);
+        }, 300);
     }
-);
+
+    return ExampleViewModel;
+});

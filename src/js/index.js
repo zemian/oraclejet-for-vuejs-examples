@@ -58,6 +58,13 @@ require(['text!nav-links.json',
         }.bind(this);
 
         // === Support Methods
+
+        this.showProgress = ko.computed(() => {
+            // We check "> 5" here because we do not want to display progress bar
+            // if module can load quickly. This is avoid excessive flashing.
+            return this.progressValue() > 5 && this.progressValue() < 100;
+        });
+
         this.updateProgress = () => {
             if (this.progressValue() < 100) {
                 let step = 2;

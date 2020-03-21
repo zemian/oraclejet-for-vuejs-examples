@@ -36,11 +36,8 @@
         <div id="content">
             <h1>
                 <oj-bind-text value="[[currentNavLink().pageTitle]]"></oj-bind-text>
-                <!-- NOTE: We use "progressValue() > 25 here" because on system
-                 where module is loading fast, we do not want flicker of progress bar
-                 visible. -->
                 <oj-progress
-                        :style="[[{visibility: progressValue() > 5 && progressValue() < 100 ? 'visible': 'hidden'}]]"
+                        :style="[[{visibility: showProgress() ? 'visible': 'hidden'}]]"
                         value="[[progressValue]]">
                 </oj-progress>
             </h1>

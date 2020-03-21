@@ -39,7 +39,7 @@
                 <oj-progress value="[[progressValue]]"></oj-progress>
             </h1>
             <oj-bind-if test="[[isModuleReady]]">
-                <p>
+                <p class="module-description">
                     <oj-bind-text value="[[currentNavLink().description]]"></oj-bind-text>
                 </p>
                 <oj-module id="content-module" config="[[moduleConfig]]"></oj-module>

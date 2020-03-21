@@ -1,6 +1,5 @@
 html, body, #app, #page-body, #content, #content-module {
     height: 100%;
-    width: 100%;
 }
 
 #app {
@@ -20,4 +19,9 @@ html, body, #app, #page-body, #content, #content-module {
 
 #content {
     flex: 1 1 auto;
+}
+
+.module-description {
+    border-left: 10px solid lightgray;
+    padding-left: 3px;
 }

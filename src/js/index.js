@@ -34,13 +34,16 @@ require(['text!nav-links.json',
     'ojs/ojmodule-element-utils',
     'ojs/ojmodule-element',
     'ojs/ojknockout',
-    'ojs/ojnavigationlist'
+    'ojs/ojnavigationlist',
+    'ojs/ojprogress'
 ], function (navLinksJsonText, Bootstrap, ko, ArrayDataProvider, ModuleUtils) {
 
     function AppViewModel() {
         // == Data
         this.moduleConfig = ko.observable({"view": [], "viewModel": null});
         this.currentNavLink = ko.observable();
+        this.showProgress = ko.observable(false);
+
         this.navLinks = null;
         this.navLinksDP = null;
 
@@ -56,6 +59,8 @@ require(['text!nav-links.json',
         // === Support Methods
         this.loadModuleConfig = function (name, options) {
             console.log("Loading module: ", name, options);
+
+            this.showProgress(true);
 
             // Setup default options
             options = Object.assign(options || {}, {pathPrefix: "examples"});
@@ -79,6 +84,7 @@ require(['text!nav-links.json',
             }
             Promise.all(promiseArray).then((values) => {
                 this.moduleConfig({"view": values[0], "viewModel": values[1]});
+                this.showProgress(false);
             });
         };
 
@@ -87,11 +93,13 @@ require(['text!nav-links.json',
             this.navLinks = JSON.parse(navLinksJsonText);
             this.navLinksDP = new ArrayDataProvider(this.navLinks, {keyAttributes: "id"});
 
+            let navLink;
+
             // Parse query string to see if navLink is give
             let params = new URLSearchParams(window.location.search);
             if (params.has("id")) {
                 let name = params.get("id");
-                let navLink = this.navLinks.find(e => e.id === name);
+                navLink = this.navLinks.find(e => e.id === name);
                 if (!navLink) {
                     // If we don't find it in nav-links.json, we will manually create one
                     navLink = {id: name, pageTitle: name};
@@ -100,15 +108,13 @@ require(['text!nav-links.json',
                         navLink[pair[0]] = pair[1];
                     }
                 }
-                this.currentNavLink(navLink);
-                this.loadModuleConfig(navLink.id, navLink);
             } else {
                 // Load navLink from nav-links.json
                 // Note the navLink is also pass as the module options
-                let navLink = this.navLinks.find(e => e.isDefault);
-                this.currentNavLink(navLink);
-                this.loadModuleConfig(navLink.id, navLink);
+                navLink = this.navLinks.find(e => e.isDefault);
             }
+            this.currentNavLink(navLink);
+            this.loadModuleConfig(navLink.id, navLink);
         };
 
         // Init ViewModel

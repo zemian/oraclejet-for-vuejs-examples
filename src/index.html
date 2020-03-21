@@ -36,7 +36,10 @@
         <div id="content">
             <h1>
                 <oj-bind-text value="[[currentNavLink().pageTitle]]"></oj-bind-text>
-                <oj-progress value="[[progressValue]]"></oj-progress>
+                <oj-progress
+                        :style="[[{visibility: progressValue() > 25 && progressValue() < 100 ? 'visible': 'hidden'}]]"
+                        value="[[progressValue]]">
+                </oj-progress>
             </h1>
             <oj-bind-if test="[[isModuleReady]]">
                 <p class="module-description">

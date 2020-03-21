@@ -58,9 +58,9 @@ require(['text!nav-links.json',
         }.bind(this);
 
         // === Support Methods
-        this.updateProgress = function () {
-            if (!this.isModuleReady() && this.progressValue() < 100) {
-                let step = 5;
+        this.updateProgress = () => {
+            if (this.progressValue() < 100) {
+                let step = 2;
                 let interval = 1500 / (100 / step); // total of 1.5 seconds
                 this.progressValue(this.progressValue() + step);
                 setTimeout(this.updateProgress, interval);

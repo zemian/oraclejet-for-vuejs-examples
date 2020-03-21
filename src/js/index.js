@@ -43,7 +43,7 @@ require(['text!nav-links.json',
         this.moduleConfig = ko.observable({"view": [], "viewModel": null});
         this.currentNavLink = ko.observable();
         this.isModuleReady = ko.observable(false);
-        this.progressValue = ko.observable(100);
+        this.progressValue = ko.observable(0);
 
         this.navLinks = null;
         this.navLinksDP = null;

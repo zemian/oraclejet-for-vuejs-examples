@@ -40,7 +40,7 @@
                  where module is loading fast, we do not want flicker of progress bar
                  visible. -->
                 <oj-progress
-                        :style="[[{visibility: progressValue() > 25 && progressValue() < 100 ? 'visible': 'hidden'}]]"
+                        :style="[[{visibility: progressValue() > 5 && progressValue() < 100 ? 'visible': 'hidden'}]]"
                         value="[[progressValue]]">
                 </oj-progress>
             </h1>

@@ -2,10 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>OJET Learn</title>
 
     <!-- Ensure to update path prefix based on this html file location! -->
     <link rel="stylesheet" href="../web/css/alta/8.1.0/web/alta.css" />
@@ -28,8 +24,8 @@
     </div>
 
     <script>
-        require(['knockout', 'ojs/ojbootstrap', 'ojs/ojknockout', 'ojs/ojinputtext', 'ojs/ojbutton'],
-            function (ko, Bootstrap) {
+        require(['knockout', 'ojs/ojknockout', 'ojs/ojinputtext', 'ojs/ojbutton'],
+            function (ko) {
                 function AppViewModel() {
                     this.name = ko.observable();
                     this.result = ko.observable();

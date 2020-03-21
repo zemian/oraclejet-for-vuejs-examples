@@ -34,13 +34,11 @@
             </oj-navigation-list>
         </div>
         <div id="content">
-            <oj-bind-if test="[[showProgress]]">
-                <oj-progress value="100"></oj-progress>
-            </oj-bind-if>
-            <oj-bind-if test="[[!showProgress()]]">
-                <h1>
-                    <oj-bind-text value="[[currentNavLink().pageTitle]]"></oj-bind-text>
-                </h1>
+            <h1>
+                <oj-bind-text value="[[currentNavLink().pageTitle]]"></oj-bind-text>
+                <oj-progress value="[[progressValue]]"></oj-progress>
+            </h1>
+            <oj-bind-if test="[[isModuleReady]]">
                 <p>
                     <oj-bind-text value="[[currentNavLink().description]]"></oj-bind-text>
                 </p>

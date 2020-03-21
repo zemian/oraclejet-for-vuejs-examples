@@ -42,7 +42,8 @@ require(['text!nav-links.json',
         // == Data
         this.moduleConfig = ko.observable({"view": [], "viewModel": null});
         this.currentNavLink = ko.observable();
-        this.showProgress = ko.observable(false);
+        this.isModuleReady = ko.observable(false);
+        this.progressValue = ko.observable(100);
 
         this.navLinks = null;
         this.navLinksDP = null;
@@ -57,10 +58,21 @@ require(['text!nav-links.json',
         }.bind(this);
 
         // === Support Methods
+        this.updateProgress = function () {
+            if (!this.isModuleReady() && this.progressValue() < 100) {
+                let step = 5;
+                let interval = 1500 / (100 / step); // total of 1.5 seconds
+                this.progressValue(this.progressValue() + step);
+                setTimeout(this.updateProgress, interval);
+            }
+        };
+
         this.loadModuleConfig = function (name, options) {
             console.log("Loading module: ", name, options);
 
-            this.showProgress(true);
+            this.isModuleReady(false);
+            this.progressValue(0);
+            this.updateProgress();
 
             // Setup default options
             options = Object.assign(options || {}, {pathPrefix: "examples"});
@@ -84,7 +96,8 @@ require(['text!nav-links.json',
             }
             Promise.all(promiseArray).then((values) => {
                 this.moduleConfig({"view": values[0], "viewModel": values[1]});
-                this.showProgress(false);
+                this.isModuleReady(true);
+                this.progressValue(100);
             });
         };
 

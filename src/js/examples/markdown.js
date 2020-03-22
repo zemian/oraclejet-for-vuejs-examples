@@ -20,7 +20,7 @@ define(['knockout',
 ], function (ko, marked, _, HtmlUtils) {
 
     function ExampleViewModel() {
-        this.editorInput = ko.observable("# Hello");
+        this.editorInput = ko.observable("# Hello, **World**!");
         this.compiledMarkdown = ko.computed(function () {
             let result = marked(this.editorInput(), {sanitize: true});
             //console.log("Markdown:", result);

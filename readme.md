@@ -42,7 +42,7 @@ npx ojet serve
 The Oracle JET library uses KnockoutJS as its UI and model binding, and includes a large set of
 UI components (including charts and graphs). So comparing it to VueJS itself is not 
 strictly fair, since VueJS is at a lower level, like KnockoutJS. A VueJS based UI library 
-such as [Buefy](https://buefy.org/) would be more similar to OJET. However the original 
+such as [BootstrapVue](https://bootstrap-vue.js.org/) would be more similar to OJET. However the original 
 VueJS distribution comes with some very interesting demos, therefore I wanted to convert them
 using OJET and see how things compared in implementation details.
 

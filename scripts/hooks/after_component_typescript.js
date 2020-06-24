@@ -4,12 +4,11 @@
   as shown at https://oss.oracle.com/licenses/upl/
 
 */
-
 'use strict';
 
 module.exports = function (configObj) {
-  return new Promise((resolve, reject) => {
-  	console.log("Running after_build hook.");
-  	resolve(configObj);
+  return new Promise((resolve) => {
+    console.log("Running after_component_typescript hook.");
+    resolve(configObj);
   });
 };

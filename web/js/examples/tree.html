@@ -1,0 +1,39 @@
+<!-- item template -->
+<script type="text/x-template" id="tree-item-template">
+    <li>
+        <div :class="[[{bold: isFolder}]]"
+             on-click="[[toggle]]"
+             on-dblclick="[[changeType]]">
+            <oj-bind-text value="[[model.name]]"></oj-bind-text>
+            <oj-bind-if test="[[isFolder() || childrenObsArray()]]">
+                <span>
+                    <oj-bind-text value="[[open() ? '[-]' : '[+]']]"></oj-bind-text>
+                </span>
+            </oj-bind-if>
+        </div>
+        <oj-bind-if test="[[(isFolder() && open()) && childrenObsArray()]]">
+            <ul>
+                <oj-bind-for-each data="[[childrenObsArray()]]">
+                    <template>
+                        <tree-item
+                                class="item"
+                                model="[[$current.data]]">
+                        </tree-item>
+                    </template>
+                </oj-bind-for-each>
+
+                <li class="add" on-click="[[addChild]]">+</li>
+            </ul>
+        </oj-bind-if>
+    </li>
+</script>
+
+<p>(You can double click on an item to turn it into a folder.)</p>
+
+<!-- the demo root element -->
+<ul id="demo-tree">
+    <tree-item
+            class="item"
+            model="[[treeData]]">
+    </tree-item>
+</ul>

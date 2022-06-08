@@ -1,0 +1,7 @@
+#demo-select2 {
+    font: 13px/18px sans-serif;
+}
+
+#demo-select2 select {
+    min-width: 300px;
+}

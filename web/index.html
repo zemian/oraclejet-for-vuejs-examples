@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>Oracle JET Examples</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1">
+    <link rel="icon" href="css/images/favicon.ico" type="image/x-icon"/>
+
+    <!-- This is the main css file for the default Alta theme -->
+<!-- injector:theme -->
+<link rel="stylesheet" href="css/redwood/9.0.0/web/redwood.min.css" id="css" />
+<!-- endinjector -->
+
+    <!-- This is where you would add any app specific styling -->
+    <link rel="stylesheet" href="css/app.css" type="text/css"/>
+</head>
+<body>
+<div id="app">
+    <div id="header">
+        <!--        <h1>Oracle JET Examples</h1>-->
+    </div>
+    <div id="page-body">
+        <div id="nav">
+            <oj-navigation-list
+                    data="[[navLinksDP]]"
+                    selection="[[currentNavLink().id]]"
+                    on-selection-changed="[[onNavLinkChanged]]">
+                <template slot="itemTemplate">
+                    <li><a class="oj-link" href="#">
+                        <oj-bind-text value="[[$current.data.label]]"></oj-bind-text>
+                    </a></li>
+                </template>
+            </oj-navigation-list>
+        </div>
+        <div id="content">
+            <h1>
+                <oj-bind-text value="[[currentNavLink().pageTitle]]"></oj-bind-text>
+                <oj-progress
+                        :style="[[{visibility: showProgress() ? 'visible': 'hidden'}]]"
+                        value="[[progressValue]]">
+                </oj-progress>
+            </h1>
+            <oj-bind-if test="[[isModuleReady]]">
+                <p class="module-description">
+                    <oj-bind-text value="[[currentNavLink().description]]"></oj-bind-text>
+                </p>
+                <oj-module id="content-module" config="[[moduleConfig]]"></oj-module>
+            </oj-bind-if>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/libs/require/require.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

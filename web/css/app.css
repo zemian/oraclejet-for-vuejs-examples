@@ -1,0 +1,27 @@
+html, body, #app, #page-body, #content, #content-module {
+    height: 100%;
+}
+
+#app {
+    margin: 10px;
+}
+
+#page-body {
+    display: flex;
+    flex-direction: row;
+}
+
+#nav {
+    flex: 0 0 auto;
+    width: 250px;
+    margin-right: 10px;
+}
+
+#content {
+    flex: 1 1 auto;
+}
+
+.module-description {
+    border-left: 10px solid lightgray;
+    padding-left: 3px;
+}

@@ -1,0 +1,14 @@
+#demo-commits {
+    font-family: 'Helvetica', Arial, sans-serif;
+}
+#demo-commits a {
+    text-decoration: none;
+    color: #f66;
+}
+#demo-commits li {
+    line-height: 1.5em;
+    margin-bottom: 20px;
+}
+#demo-commits .author, .date {
+    font-weight: bold;
+}

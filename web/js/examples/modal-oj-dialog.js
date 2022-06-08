@@ -1,0 +1,1 @@
+define(["knockout","ojs/ojbutton","ojs/ojdialog","ojs/ojknockout"],(function(){return function(){this.onOpenModal=o=>{document.getElementById("demo-modal-oj-dialog-1").open()},this.onCloseModal=o=>{document.getElementById("demo-modal-oj-dialog-1").close()}}}));

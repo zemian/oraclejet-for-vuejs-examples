@@ -1,0 +1,45 @@
+#demo-elastic-header h1 {
+    font-weight: 300;
+    font-size: 1.8em;
+    margin-top: 0;
+}
+#demo-elastic-header a {
+    color: #fff;
+}
+#demo-elastic-header .draggable-header-view {
+    background-color: #fff;
+    box-shadow: 0 4px 16px rgba(0,0,0,.15);
+    width: 320px;
+    height: 560px;
+    overflow: hidden;
+    margin: 30px auto;
+    position: relative;
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#demo-elastic-header .draggable-header-view .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+#demo-elastic-header .draggable-header-view .header,
+#demo-elastic-header .draggable-header-view .content {
+    position: relative;
+    z-index: 1;
+    padding: 30px;
+    box-sizing: border-box;
+}
+#demo-elastic-header .draggable-header-view .header {
+    height: 160px;
+}
+#demo-elastic-header .draggable-header-view .content {
+    color: #333;
+    line-height: 1.5em;
+}

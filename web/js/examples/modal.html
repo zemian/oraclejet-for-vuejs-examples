@@ -1,0 +1,33 @@
+<div id="demo-modal">
+    <button id="show-modal" on-click="[[onOpenModal]]">Show Modal</button>
+    <oj-bind-if test="[[showModal]]">
+        <demo-modal id="demo-modal-component">
+            <h3 slot="header">custom header</h3>
+        </demo-modal>
+    </oj-bind-if>
+</div>
+<template type="text/x-template" id="demo-modal-template">
+    <div class="modal-mask">
+        <div class="modal-wrapper">
+            <div class="modal-container">
+
+                <div class="modal-header">
+                    <oj-bind-slot name="header">default header</oj-bind-slot>
+                </div>
+
+                <div class="modal-body">
+                    <oj-bind-slot name="body">default body</oj-bind-slot>
+                </div>
+
+                <div class="modal-footer">
+                    <oj-bind-slot name="footer">
+                        default footer
+                        <button class="modal-default-button" on-click="[[onCloseModal]]">
+                            OK
+                        </button>
+                    </oj-bind-slot>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

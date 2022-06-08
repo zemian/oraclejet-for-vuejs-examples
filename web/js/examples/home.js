@@ -1,0 +1,1 @@
+define(["knockout"],(function(e){return new function(){this.serverTime=e.observable(new Date),this.connected=()=>{let e=()=>{this.serverTime(new Date),setTimeout(e,1e3)};e()}}}));

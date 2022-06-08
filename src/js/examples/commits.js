@@ -12,8 +12,8 @@ define(['knockout',
     function ExampleViewModel() {
         var self = this;
 
-        this.branches = ko.observableArray(['master', 'dev']);
-        this.currentBranch = ko.observable('master');
+        this.branches = ko.observableArray(['main', 'dev']);
+        this.currentBranch = ko.observable('main');
         this.commits = ko.observableArray();
 
         this.connected = () => {

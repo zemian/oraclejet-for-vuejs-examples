@@ -4,7 +4,7 @@ This project re-implements some of the [VueJS](https://vuejs.org/) examples usin
 JavaScript UI libraries that help with building web applications. More details can be found on
 the library websites.
 
-[Live Demo](https://raw.githack.com/zemian/oraclejet-for-vuejs-examples-demo/master/web/index.html)
+[Live Demo](https://rawcdn.githack.com/zemian/oraclejet-for-vuejs-examples-demo/master/web/index.html)
 
 [Screenshots](docs/screenshots.md)
 

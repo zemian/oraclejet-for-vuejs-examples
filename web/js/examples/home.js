@@ -1,1 +1,18 @@
-define(["knockout"],(function(e){return new function(){this.serverTime=e.observable(new Date),this.connected=()=>{let e=()=>{this.serverTime(new Date),setTimeout(e,1e3)};e()}}}));
+/**
+ * This is just a home page to show the server time.
+ */
+define(['knockout'], function (ko) {
+    function ExampleViewModel() {
+        this.serverTime = ko.observable(new Date());
+
+        this.connected = () => {
+            let updateServerTime = () => {
+                this.serverTime(new Date());
+                setTimeout(updateServerTime, 1000);
+            };
+            updateServerTime();
+        };
+    }
+
+    return new ExampleViewModel();
+});

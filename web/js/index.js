@@ -1,1 +1,148 @@
-require(["text!nav-links.json","ojs/ojbootstrap","knockout","ojs/ojarraydataprovider","ojs/ojmodule-element-utils","ojs/ojmodule-element","ojs/ojknockout","ojs/ojnavigationlist","ojs/ojprogress"],(function(e,i,s,t,o){function n(){this.moduleConfig=s.observable({view:[],viewModel:null}),this.currentNavLink=s.observable(),this.isModuleReady=s.observable(!1),this.progressValue=s.observable(0),this.navLinks=null,this.navLinksDP=null,this.onNavLinkChanged=function(e){let i=e.detail.value,s=this.navLinks.find(e=>e.id===i);this.currentNavLink(s),this.loadModuleConfig(s.id,s)}.bind(this),this.showProgress=s.computed(()=>this.progressValue()>5&&this.progressValue()<100),this.updateProgress=()=>{if(this.progressValue()<100){let e=2,i=1500/(100/e);this.progressValue(this.progressValue()+e),setTimeout(this.updateProgress,i)}},this.loadModuleConfig=function(e,i){console.log("Loading module: ",e,i),this.isModuleReady(!1),this.progressValue(0),this.updateProgress();let s=(i=Object.assign(i||{},{pathPrefix:"examples"})).pathPrefix,t=`${s}/${e}.html`,n=`${s}/${e}`,a=[],l=o.createView({viewPath:t});if(a.push(l),!i.skipViewModel){let e=o.createViewModel({viewModelPath:n});a.push(e)}if(!i.skipCss){let i=new Promise((function(i,t){require([`css!${s}/${e}.css`],i,t)}));a.push(i)}Promise.all(a).then(e=>{this.moduleConfig({view:e[0],viewModel:e[1]}),this.isModuleReady(!0),this.progressValue(100)})},this.init=function(){let i;this.navLinks=JSON.parse(e),this.navLinksDP=new t(this.navLinks,{keyAttributes:"id"});let s=new URLSearchParams(window.location.search);if(s.has("id")){let e=s.get("id");if(i=this.navLinks.find(i=>i.id===e),!i){i={id:e,pageTitle:e};for(let e of s.entries())i[e[0]]=e[1]}}else i=this.navLinks.find(e=>e.isDefault);this.currentNavLink(i),this.loadModuleConfig(i.id,i)},this.init()}i.whenDocumentReady().then((function(){let e=new n;s.applyBindings(e,document.getElementById("app"))}))}));
+/**
+ * Main ViewModel for the index.html, which is a Single Page Application.
+ *
+ * This ViewModel uses oj-module component to load different pages into the application
+ * under "example" folder. Each example page contains their own html, viewModel and a css file.
+ *
+ * The module is loaded by using a "NavLink" object that uses "id" as the module name, and the
+ * objects itself as options parameters. The following options are supported:
+ *
+ *  - pathPrefix - default to "examples" folder.
+ *  - skipCss - default is undefined.
+ *  - skipViewModel - default is undefined.
+ *
+ * So the module loader will load the following files by default:
+ *  <options.pathPrefix>/<navLink.id>.html
+ *  <options.pathPrefix>/<navLink.id>.js
+ *  <options.pathPrefix>/<navLink.id>.css
+ *
+ * The navLink id and options can be overridden by URL query parameters. For example:
+ *
+ *   index.html?id=test
+ *      Loads "examples/test.html", "js: and "css" files.
+ *
+ *   index.html?id=test&skipCss=true&skipViewModel=true
+ *      Loads "examples/test.html" only.
+ *
+ *   index.html?id=test&pathPrefix=my-examples
+ *      Loads "my-examples/test.html", "js: and "css" files.
+ */
+require(['text!nav-links.json',
+    'ojs/ojbootstrap',
+    'knockout',
+    'ojs/ojarraydataprovider',
+    'ojs/ojmodule-element-utils',
+    'ojs/ojmodule-element',
+    'ojs/ojknockout',
+    'ojs/ojnavigationlist',
+    'ojs/ojprogress'
+], function (navLinksJsonText, Bootstrap, ko, ArrayDataProvider, ModuleUtils) {
+
+    function AppViewModel() {
+        // == Data
+        this.moduleConfig = ko.observable({"view": [], "viewModel": null});
+        this.currentNavLink = ko.observable();
+        this.isModuleReady = ko.observable(false);
+        this.progressValue = ko.observable(0);
+
+        this.navLinks = null;
+        this.navLinksDP = null;
+
+        // === Event Handlers
+        this.onNavLinkChanged = function (event) {
+            //console.log("Changing menu nav", event);
+            let name = event.detail.value;
+            let navLink = this.navLinks.find(e => e.id === name);
+            this.currentNavLink(navLink);
+            this.loadModuleConfig(navLink.id, navLink);
+        }.bind(this);
+
+        // === Support Methods
+
+        this.showProgress = ko.computed(() => {
+            // We check "> 5" here because we do not want to display progress bar
+            // if module can load quickly. This is avoid excessive flashing.
+            return this.progressValue() > 5 && this.progressValue() < 100;
+        });
+
+        this.updateProgress = () => {
+            if (this.progressValue() < 100) {
+                let step = 2;
+                let interval = 1500 / (100 / step); // total of 1.5 seconds
+                this.progressValue(this.progressValue() + step);
+                setTimeout(this.updateProgress, interval);
+            }
+        };
+
+        this.loadModuleConfig = function (name, options) {
+            console.log("Loading module: ", name, options);
+
+            this.isModuleReady(false);
+            this.progressValue(0);
+            this.updateProgress();
+
+            // Setup default options
+            options = Object.assign(options || {}, {pathPrefix: "examples"});
+
+            let pathPrefix = options.pathPrefix;
+            let viewPath = `${pathPrefix}/${name}.html`;
+            let modelPath = `${pathPrefix}/${name}`;
+            let promiseArray = [];
+
+            let viewPromise = ModuleUtils.createView({"viewPath": viewPath});
+            promiseArray.push(viewPromise);
+            if (!options.skipViewModel) {
+                let viewModelPromise = ModuleUtils.createViewModel({"viewModelPath": modelPath});
+                promiseArray.push(viewModelPromise);
+            }
+            if (!options.skipCss) {
+                let cssPromise = new Promise(function (resolve, reject) {
+                    require([`css!${pathPrefix}/${name}.css`], resolve, reject);
+                });
+                promiseArray.push(cssPromise);
+            }
+            Promise.all(promiseArray).then((values) => {
+                this.moduleConfig({"view": values[0], "viewModel": values[1]});
+                this.isModuleReady(true);
+                this.progressValue(100);
+            });
+        };
+
+        this.init = function () {
+            // Initialize model data
+            this.navLinks = JSON.parse(navLinksJsonText);
+            this.navLinksDP = new ArrayDataProvider(this.navLinks, {keyAttributes: "id"});
+
+            let navLink;
+
+            // Parse query string to see if navLink is give
+            let params = new URLSearchParams(window.location.search);
+            if (params.has("id")) {
+                let name = params.get("id");
+                navLink = this.navLinks.find(e => e.id === name);
+                if (!navLink) {
+                    // If we don't find it in nav-links.json, we will manually create one
+                    navLink = {id: name, pageTitle: name};
+                    // Add rest of query params as module options
+                    for (let pair of params.entries()) {
+                        navLink[pair[0]] = pair[1];
+                    }
+                }
+            } else {
+                // Load navLink from nav-links.json
+                // Note the navLink is also pass as the module options
+                navLink = this.navLinks.find(e => e.isDefault);
+            }
+            this.currentNavLink(navLink);
+            this.loadModuleConfig(navLink.id, navLink);
+        };
+
+        // Init ViewModel
+        this.init();
+    }
+
+    Bootstrap.whenDocumentReady().then(function () {
+        let app = new AppViewModel();
+        ko.applyBindings(app, document.getElementById('app'));
+    });
+});

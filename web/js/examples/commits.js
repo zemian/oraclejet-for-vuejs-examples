@@ -1,1 +1,53 @@
-define(["knockout","ojs/ojknockout","ojs/ojoption","ojs/ojradioset"],(function(e){return function(){var t=this;this.branches=e.observableArray(["main","dev"]),this.currentBranch=e.observable("main"),this.commits=e.observableArray(),this.connected=()=>{this.fetchData()},this.onBranchNameChanged=e=>{var t=e.detail.value;console.log("Changing current branch name "+t),this.currentBranch(t),this.fetchData()},this.fetchData=function(){var e=new XMLHttpRequest;e.open("GET","https://api.github.com/repos/vuejs/vue/commits?per_page=3&sha="+t.currentBranch()),e.onload=function(){var n=JSON.parse(e.responseText);console.log("Github response: ",n),t.commits(n)},e.send()},this.truncate=function(e){var t=e.indexOf("\n");return t>0?e.slice(0,t):e},this.formatDate=function(e){return e.replace(/T|Z/g," ")}}}));
+/**
+ * OJET can access external API very well as well. Here we match to the VueJS
+ * examples to fetch GitHub commits and using KO observable to toggle
+ * different branches as input parameter.
+ */
+define(['knockout',
+    'ojs/ojknockout',
+    'ojs/ojoption',
+    'ojs/ojradioset'
+], function (ko) {
+
+    function ExampleViewModel() {
+        var self = this;
+
+        this.branches = ko.observableArray(['main', 'dev']);
+        this.currentBranch = ko.observable('main');
+        this.commits = ko.observableArray();
+
+        this.connected = () => {
+            this.fetchData();
+        };
+
+        this.onBranchNameChanged = (event) => {
+            var branchName = event.detail.value;
+            console.log("Changing current branch name " + branchName);
+            this.currentBranch(branchName);
+            this.fetchData();
+        };
+
+        this.fetchData = function () {
+            var apiURL = 'https://api.github.com/repos/vuejs/vue/commits?per_page=3&sha=';
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', apiURL + self.currentBranch());
+            xhr.onload = function () {
+                var respItems = JSON.parse(xhr.responseText);
+                console.log("Github response: ", respItems);
+                self.commits(respItems);
+                //console.log(respItems[0].html_url);
+            };
+            xhr.send();
+        };
+
+        this.truncate = function (v) {
+            var newline = v.indexOf('\n');
+            return newline > 0 ? v.slice(0, newline) : v;
+        };
+        this.formatDate = function (v) {
+            return v.replace(/T|Z/g, ' ');
+        };
+    }
+
+    return ExampleViewModel;
+});

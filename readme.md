@@ -6,7 +6,9 @@ the library websites.
 
 [Live Demo](https://rawcdn.githack.com/zemian/oraclejet-for-vuejs-examples/master/web/index.html)
 
-(NOTE: We commit the `web` output folder into the branch, and let githack.com serve it as static files from repo!)
+(NOTE: Due to slow network acces, the demo might take some time to load, so be patient!)
+
+(NOTE2: We commited the `web` output folder into this repository branch, so that it can be served by githack.com as demo. Normally this folder is ignored by source.)
 
 [Screenshots](docs/screenshots.md)
 

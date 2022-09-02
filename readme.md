@@ -81,3 +81,8 @@ Re-implementation List:
 - [ ] Firebase + Validation
 - [x] TodoMVC
 - [ ] HackerNews Clone
+
+
+## Related Project
+
+There is another [JET demo proejct - ojet-7-gui](https://github.com/zemian/oraclejet-for-vuejs-examples/blob/master/readme.md) that uses newer JET release. It demonstrates the usage of JET VDOM and "preact" coding style.

@@ -7,7 +7,7 @@
   },
   "devDependencies": {
     "@oracle/ojet-cli": "9.0.0",
-    "@oracle/oraclejet-tooling": "9.0.0"
+    "@oracle/oraclejet-tooling": "9.2.2"
   },
   "engines": {
     "node": ">=0.10.0"
